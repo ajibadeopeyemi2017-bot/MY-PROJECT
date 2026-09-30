@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Learning Portal & Classroom | Greater Light Online Academy</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/classroom.css">
+</head>
+<body class="classroom-body">
+
+  <!-- Ambient Glowing Background Mesh -->
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="mesh-orb-1" style="opacity: 0.5;"></div>
+    <div class="mesh-orb-2" style="opacity: 0.4;"></div>
+  </div>
+
+  <!-- Classroom Navigation Bar -->
+  <nav class="classroom-nav">
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <a href="index.html" class="classroom-back-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Back to Academy</span>
+      </a>
+
+      <div class="brand-icon" style="width: 32px; height: 32px; font-size: 0.95rem;">GL</div>
+
+      <div class="classroom-course-title-nav">
+        <span id="navCourseTitle">Loading Course...</span>
+        <span class="classroom-progress-pill" id="navProgressPill">0% Progress</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="btn btn-primary btn-sm" onclick="markCurrentLessonCompleted()" id="markDoneBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Mark Lesson Complete</span>
+      </button>
+
+      <div style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--border-glass); padding-left: 16px;">
+        <div class="author-avatar" style="width: 36px; height: 36px; font-size: 0.85rem;">ST</div>
+        <div style="display: flex; flex-direction: column;">
+          <strong style="font-size: 0.82rem; color: #fff;">Student Portal</strong>
+          <small style="font-size: 0.7rem; color: var(--accent-emerald);">All-Access Active</small>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Classroom Split Container -->
+  <main class="classroom-container">
+    
+    <!-- Left: Video Player, Notes, Quiz & Resources -->
+    <section class="player-pane">
+      
+      <!-- Video Screen -->
+      <div class="video-screen-container" id="videoContainer">
+        <div class="video-poster-layer" style="background-image: url('assets/images/stem_hologram.jpg');"></div>
+        <div class="video-watermark">GLGC Academy • Live Interactive Lesson</div>
+
+        <button class="play-central-btn" id="centralPlayBtn" aria-label="Play video lecture">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </button>
+
+        <!-- Video Player Control Bar -->
+        <div class="video-controls-bar">
+          <div class="progress-scrub-bar" id="scrubBar">
+            <div class="progress-filled" id="videoProgressFill">
+              <div class="progress-scrub-handle"></div>
+            </div>
+          </div>
+
+          <div class="controls-buttons-row">
+            <div class="controls-left">
+              <button class="control-btn" id="miniPlayBtn" aria-label="Play or pause">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+              <span class="video-timestamp" id="videoTimeDisplay">02:22 / 30:40</span>
+            </div>
+
+            <div class="controls-right">
+              <select class="speed-select" id="playbackSpeed" aria-label="Playback speed">
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1.0x (Normal)</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2.0x</option>
+              </select>
+
+              <button class="control-btn" onclick="showToast('HD 1080p Quality streaming active', 'info')" title="Resolution Quality">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lesson Header Row -->
+      <div class="lesson-head-row">
+        <div>
+          <h1 class="active-lesson-title" id="activeLessonTitle">Loading Lesson...</h1>
+          <p class="lesson-instructor-sub" id="lessonInstructor">Taught by Engr. Ajibade Opeyemi Phillip</p>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-outline btn-sm" onclick="downloadResource('Formula_Compendium.pdf')">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Formula Sheet</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="classroom-tabs-nav">
+        <button class="c-tab-btn active" data-tab="tabNotes">Lecture Notes & Formulas</button>
+        <button class="c-tab-btn" data-tab="tabQuiz">Practice Quiz / Checkpoint</button>
+        <button class="c-tab-btn" data-tab="tabResources">Downloadable Materials</button>
+        <button class="c-tab-btn" data-tab="tabDiscussion">Q&A & Discussion</button>
+      </div>
+
+      <!-- Tab 1: Lecture Notes -->
+      <div class="c-tab-pane active" id="tabNotes">
+        <div class="notes-card" id="notesContentArea">
+          <!-- Rendered by js/classroom.js -->
+        </div>
+      </div>
+
+      <!-- Tab 2: Practice Quiz -->
+      <div class="c-tab-pane" id="tabQuiz">
+        <div class="quiz-box" id="quizContentArea">
+          <!-- Rendered by js/classroom.js -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Downloadable Materials -->
+      <div class="c-tab-pane" id="tabResources">
+        <div class="resources-grid">
+          <div class="resource-download-card">
+            <div>
+              <strong style="display: block; font-size: 0.95rem; color: #fff;">Calculus & Algebra Cheat Sheet</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 4.2 MB • Prepared by Engr. Ajibade</small>
+            </div>
+            <button class="btn btn-cyan btn-sm" onclick="downloadResource('Calculus_Cheat_Sheet.pdf')">Download</button>
+          </div>
+
+          <div class="resource-download-card">
+            <div>
+              <strong style="display: block; font-size: 0.95rem; color: #fff;">Digital SAT Math Traps Guide</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 2.8 MB • Bluebook strategies</small>
+            </div>
+            <button class="btn btn-cyan btn-sm" onclick="downloadResource('SAT_Math_Traps.pdf')">Download</button>
+          </div>
+
+          <div class="resource-download-card">
+            <div>
+              <strong style="display: block; font-size: 0.95rem; color: #fff;">IELTS Band 8.5 Task 2 Templates</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 1.6 MB • 20 High-Band Essays</small>
+            </div>
+            <button class="btn btn-cyan btn-sm" onclick="downloadResource('IELTS_Band85_Templates.pdf')">Download</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Discussion & Q&A -->
+      <div class="c-tab-pane" id="tabDiscussion">
+        <div class="notes-card">
+          <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 14px;">Ask the Instructor (Engr. Ajibade)</h3>
+          
+          <form id="questionForm" style="display: flex; gap: 12px; margin-bottom: 24px;">
+            <input type="text" id="questionInput" class="form-input" placeholder="Type your question or problem statement here..." required />
+            <button type="submit" class="btn btn-primary btn-sm">Post Question</button>
+          </form>
+
+          <div id="discussionList">
+            <!-- Simulated initial thread -->
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 18px; margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.9rem;">David Adeleke (Student)</strong>
+                <small style="color: var(--text-dim); font-size: 0.75rem;">2 hours ago</small>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
+                In step 3 of the derivation, why do we apply the integrating factor to both sides before evaluating the integral on the right?
+              </p>
+              <div style="background: rgba(79, 70, 229, 0.1); border-left: 3px solid var(--primary-glow); padding: 10px 14px; border-radius: 4px; font-size: 0.85rem; color: #a5b4fc;">
+                <strong style="display: block; color: #fff;">Instructor Response (Engr. Ajibade Opeyemi Phillip):</strong>
+                Great observation, David! Multiplying both sides by the integrating factor I(x) collapses the entire left-hand side into the exact derivative of a product: d/dx [y · I(x)]. That is what allows us to integrate both sides in a single clean step!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right: Syllabus Drawer -->
+    <aside class="syllabus-drawer">
+      <div class="drawer-head">
+        <div class="drawer-title">Course Curriculum</div>
+        <div class="progress-track-wrap">
+          <div class="track-labels">
+            <span id="drawerProgressPct">0% Complete</span>
+            <span id="drawerProgressCount">0 Lessons Done</span>
+          </div>
+          <div class="track-bar">
+            <div class="track-bar-fill" id="drawerProgressBar"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modules List -->
+      <div id="drawerModulesContainer">
+        <!-- Rendered by js/classroom.js -->
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/courses-data.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/classroom.js"></script>
+</body>
+</html>

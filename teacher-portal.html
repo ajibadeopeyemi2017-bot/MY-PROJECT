@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Registration & Course Creation Hub | Greater Light Academy</title>
+  <meta name="description" content="Register as an educator with Greater Light Academy. Upload your STEM and standardized exam courses, teach students worldwide, and earn an 80% revenue share.">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+  <!-- Ambient Glowing Background Mesh -->
+  <div class="ambient-glow-mesh" aria-hidden="true">
+    <div class="mesh-orb-1" style="background: radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, transparent 70%);"></div>
+    <div class="mesh-orb-2"></div>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);">GL</div>
+        <div class="brand-text">
+          <span class="brand-title">GREATER LIGHT <span>INSTRUCTORS</span></span>
+          <span class="brand-subtitle">Educator & Course Partner Hub</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Academy Home</a></li>
+        <li><a href="#calculator">Earnings Calculator</a></li>
+        <li><a href="#wizard">Apply as Teacher</a></li>
+        <li><a href="#benefits">Instructor Benefits</a></li>
+        <li><a href="classroom.html">Student Portal Preview</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">Return to Academy</a>
+        <a href="#wizard" class="btn btn-primary btn-sm">Join Faculty</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="teacher-hero-section">
+    <div class="container teacher-hero-grid">
+      <div>
+        <div class="badge badge-purple" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.35); margin-bottom: 16px;">
+          <span>Educator Partnership Program</span>
+        </div>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px;">
+          Teach with Greater Light. <span class="gradient-text">Inspire Scholars.</span> Earn an <span style="color: #34d399;">80% Revenue Share</span>.
+        </h1>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.65; margin-bottom: 30px;">
+          We are partnering with exceptional educators in <strong>Mathematics, Further Maths, Physics, Chemistry, Biology, English</strong>, and premier test prep coaches for <strong>SAT, IELTS, TOEFL, GRE & GMAT</strong>. Upload your classes, reach thousands of motivated students, and build recurring income.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#wizard" class="btn btn-primary btn-lg">Start Teacher Application</a>
+          <a href="#calculator" class="btn btn-outline btn-lg">Calculate Potential Revenue</a>
+        </div>
+      </div>
+
+      <!-- Instructor Earnings Calculator Card -->
+      <div class="calculator-card glass-panel" id="calculator">
+        <h3 class="calc-title">
+          <span>💰</span>
+          <span>Teacher Earnings Calculator</span>
+        </h3>
+
+        <!-- Slider 1: Students -->
+        <div class="calc-field-group">
+          <div class="calc-label-row">
+            <span>Enrolled Students</span>
+            <span class="calc-val-badge" id="calcStudentsVal">150 Students</span>
+          </div>
+          <input type="range" id="calcStudents" class="calc-range-slider" min="10" max="1000" step="10" value="150" />
+        </div>
+
+        <!-- Slider 2: Monthly Price -->
+        <div class="calc-field-group">
+          <div class="calc-label-row">
+            <span>Your Monthly Course Fee</span>
+            <span class="calc-val-badge" id="calcPriceVal">$49 / mo</span>
+          </div>
+          <input type="range" id="calcPrice" class="calc-range-slider" min="15" max="150" step="5" value="49" />
+        </div>
+
+        <!-- Result Box -->
+        <div class="calc-result-box">
+          <span class="calc-result-label">Your Estimated Monthly Payout (80% Share)</span>
+          <div class="calc-result-number" id="calcEarningsUSD">$5,880 / mo</div>
+          <p style="font-size: 0.88rem; color: var(--text-dim);" id="calcEarningsNGN">≈ ₦8,526,000 / mo</p>
+          <small style="color: var(--text-muted); display: block; margin-top: 8px;">Automated weekly transfers directly to your bank account.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-Step Application & Course Creation Studio Wizard -->
+  <section class="wizard-section" id="wizard">
+    <div class="container">
+      <div class="wizard-card glass-panel">
+        
+        <!-- Step Navigation Header -->
+        <div class="wizard-steps-header">
+          <div class="wizard-step-node active" data-step="1">
+            <div class="node-circle">1</div>
+            <span class="node-label">Teacher Bio</span>
+          </div>
+          <div class="wizard-step-node" data-step="2">
+            <div class="node-circle">2</div>
+            <span class="node-label">Qualifications</span>
+          </div>
+          <div class="wizard-step-node" data-step="3">
+            <div class="node-circle">3</div>
+            <span class="node-label">Class Studio</span>
+          </div>
+          <div class="wizard-step-node" data-step="4">
+            <div class="node-circle">4</div>
+            <span class="node-label">Live Launch</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: Educator Profile & Subject Focus -->
+        <div class="wizard-form-step active" id="stepPane1">
+          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 8px;">Step 1: Educator Profile & Subject Expertise</h2>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 28px;">Tell us about yourself and the subject you wish to teach at Greater Light Academy.</p>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Full Name & Title</label>
+              <input type="text" id="teacherFullName" class="form-input" placeholder="e.g. Dr. Johnathan Adeyemi" value="Dr. Adebayo Ogunlesi" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="teacherEmail" class="form-input" placeholder="adebayo@gmail.com" value="adebayo.tutor@gmail.com" required />
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">WhatsApp / Phone Number</label>
+              <input type="tel" id="teacherPhone" class="form-input" placeholder="+234 805 123 4567" value="08033221144" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Teaching Subject</label>
+              <select id="teacherSubject" class="form-select">
+                <option value="Mathematics">Mathematics (Pure Maths / Algebra / Trig)</option>
+                <option value="Further Maths">Further Mathematics (Calculus / Vectors / Mechanics)</option>
+                <option value="Physics">Physics (Mechanics, Waves, Electromagnetism)</option>
+                <option value="Chemistry" selected>Chemistry (Organic & Physical Chemistry)</option>
+                <option value="Biology">Biology (Genetics, Cell Physiology)</option>
+                <option value="English">English Language & Academic Writing</option>
+                <option value="SAT">SAT Prep (Math / Reading / Writing)</option>
+                <option value="IELTS">IELTS Academic & General</option>
+                <option value="TOEFL">TOEFL iBT</option>
+                <option value="GRE">GRE Quantitative & Verbal</option>
+                <option value="GMAT">GMAT Focus Edition</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Short Bio & Teaching Experience</label>
+            <textarea id="teacherBio" class="form-textarea" placeholder="Detail your teaching background, schools taught, and passion for mentoring students...">Senior Chemistry Lecturer with 10+ years experience preparing students for Cambridge A-Levels, SAT Subject tests, and Pre-Med entrance exams.</textarea>
+          </div>
+
+          <div class="wizard-actions">
+            <div></div>
+            <button type="button" class="btn btn-primary" onclick="nextStep(1)">
+              <span>Continue to Qualifications</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Qualifications & Credentials -->
+        <div class="wizard-form-step" id="stepPane2">
+          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 8px;">Step 2: Educational Credentials & Certifications</h2>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 28px;">Greater Light Academy upholds rigorous academic standards established by Director Engr. Ajibade.</p>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Highest Degree Attained</label>
+              <input type="text" id="teacherDegree" class="form-input" placeholder="e.g. M.Sc. in Chemical Engineering" value="M.Sc. in Industrial Chemistry (Obafemi Awolowo University)" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Years of Classroom Experience</label>
+              <select class="form-select">
+                <option value="3-5">3 - 5 Years</option>
+                <option value="6-10" selected>6 - 10 Years</option>
+                <option value="10+">10+ Years (Senior Educator)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Upload CV / Academic Credentials (PDF/Docx)</label>
+            <div class="upload-dropzone" onclick="simulateUpload('CV / Degree Documents')">
+              <div class="upload-icon">📄</div>
+              <strong style="color: #fff; display: block; margin-bottom: 4px;">Click to Upload Resume or Drag & Drop</strong>
+              <small style="color: var(--text-muted);">Supports PDF, DOCX, JPG (Max 25MB)</small>
+            </div>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn btn-outline" onclick="prevStep(2)">Back</button>
+            <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+              <span>Continue to Course Studio</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Course Creation Studio & Syllabus Builder -->
+        <div class="wizard-form-step" id="stepPane3">
+          <h2 style="font-size: 1.6rem; color: #fff; margin-bottom: 8px;">Step 3: Class Studio & Syllabus Builder</h2>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 28px;">Design your course title, pricing, modules, and lessons for immediate publication.</p>
+
+          <form onsubmit="submitCourseForPublishing(event)">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Course Title</label>
+                <input type="text" id="newCourseTitle" class="form-input" placeholder="e.g. Advanced Organic Synthesis & Reaction Kinetics" value="Organic Reaction Mechanisms & Stereochemistry Intensive" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject Category</label>
+                <select id="newCourseSubject" class="form-select">
+                  <option value="Chemistry" selected>Chemistry</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Further Maths">Further Maths</option>
+                  <option value="Physics">Physics</option>
+                  <option value="Biology">Biology</option>
+                  <option value="English">English</option>
+                  <option value="SAT">SAT Prep</option>
+                  <option value="IELTS">IELTS Prep</option>
+                  <option value="TOEFL">TOEFL</option>
+                  <option value="GRE">GRE</option>
+                  <option value="GMAT">GMAT</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Target Level</label>
+                <select id="newCourseLevel" class="form-select">
+                  <option value="Secondary / High School">Secondary / High School</option>
+                  <option value="Pre-University & A-Levels" selected>Pre-University & A-Levels</option>
+                  <option value="University / Undergraduate">University / Undergraduate</option>
+                  <option value="Exam Prep / Advanced">Standardized Exam Candidate</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Monthly Course Pricing</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                  <input type="number" id="newCoursePriceUSD" class="form-input" placeholder="USD $" value="49" />
+                  <input type="number" id="newCoursePriceNGN" class="form-input" placeholder="NGN ₦" value="35000" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Course Description & Learning Outcomes</label>
+              <textarea id="newCourseDesc" class="form-textarea" placeholder="Detail the core skills students will gain upon completing this course...">Comprehensive masterclass covering nucleophilic substitution (SN1/SN2), elimination (E1/E2), aromatic substitution, and 3D stereochemistry with step-by-step problem sets.</textarea>
+            </div>
+
+            <!-- Syllabus Lesson Builder -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px;">
+              <h4 style="font-size: 1.05rem; color: #fff; margin-bottom: 14px;">Course Syllabus & Lessons</h4>
+              
+              <div id="dynamicLessonsList">
+                <!-- Rendered dynamically by js/teacher.js -->
+              </div>
+
+              <!-- Add Lesson Row -->
+              <div style="display: grid; grid-template-columns: 1fr 120px auto; gap: 10px; margin-top: 14px;">
+                <input type="text" id="newLessonTitle" class="form-input" placeholder="New lesson title (e.g. SN1 vs SN2 Energy Profiles)..." />
+                <input type="text" id="newLessonDuration" class="form-input" placeholder="50 min" />
+                <button type="button" id="addLessonBtn" class="btn btn-outline btn-sm">+ Add Lesson</button>
+              </div>
+            </div>
+
+            <!-- Video Upload Simulator -->
+            <div class="form-group">
+              <label class="form-label">Upload Video Lecture File / Preview</label>
+              <div class="upload-dropzone" onclick="simulateUpload('Video Lecture MP4')">
+                <div class="upload-icon">🎥</div>
+                <strong style="color: #fff; display: block; margin-bottom: 4px;">Upload Video Lecture (1080p MP4 or MOV)</strong>
+                <small style="color: var(--text-muted);">Drag and drop your recorded class lecture or lesson preview</small>
+              </div>
+            </div>
+
+            <div class="wizard-actions">
+              <button type="button" class="btn btn-outline" onclick="prevStep(3)">Back</button>
+              <button type="submit" class="btn btn-primary">
+                <span>Publish Course to GLGC Academy</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- STEP 4: Live Instructor Dashboard Preview & Class Submission -->
+        <div class="wizard-form-step" id="stepPane4">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 14px;">✓</div>
+            <h2 style="font-size: 2rem; color: #fff;">Your Course is Now Live on Greater Light Academy!</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 8px auto 0;">
+              Your course <strong id="submittedCourseName" style="color: var(--accent-cyan);">Organic Reaction Mechanisms</strong> has been published. Students can now subscribe and enroll from our main catalog.
+            </p>
+          </div>
+
+          <!-- Instructor Dashboard Preview -->
+          <div class="instructor-dash-preview glass-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <h3 style="font-size: 1.25rem; color: #fff;">Instructor Live Dashboard</h3>
+                <small style="color: var(--text-muted);">Real-time telemetry and revenue tracker</small>
+              </div>
+              <span class="badge badge-emerald" id="submittedSubjectBadge">Active Educator</span>
+            </div>
+
+            <div class="dash-stats-row">
+              <div class="dash-stat-card">
+                <small style="color: var(--text-dim); text-transform: uppercase; font-size: 0.72rem;">Active Students</small>
+                <div class="val" style="color: var(--accent-cyan);">1</div>
+              </div>
+              <div class="dash-stat-card">
+                <small style="color: var(--text-dim); text-transform: uppercase; font-size: 0.72rem;">Pending Payout</small>
+                <div class="val" style="color: #34d399;">$39.20</div>
+              </div>
+              <div class="dash-stat-card">
+                <small style="color: var(--text-dim); text-transform: uppercase; font-size: 0.72rem;">Course Rating</small>
+                <div class="val" style="color: #fbbf24;">5.0 ★</div>
+              </div>
+              <div class="dash-stat-card">
+                <small style="color: var(--text-dim); text-transform: uppercase; font-size: 0.72rem;">Video Quality</small>
+                <div class="val" style="color: #fff;">1080p HD</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+              <a href="index.html#courses" class="btn btn-primary">View Course in Public Catalog</a>
+              <a href="classroom.html" class="btn btn-outline">Enter Classroom Preview</a>
+              <button class="btn btn-cyan" onclick="goToStep(3)">Create Another Course</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor Benefits Section -->
+  <section class="dual-portal-section" id="benefits" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-purple">Why Partner with Us</span>
+        <h2 class="section-title">The Greater Light Educator Advantage</h2>
+        <p class="section-desc">We handle global marketing, video streaming, student support, and payment gateways so you can focus on world-class teaching.</p>
+      </div>
+
+      <div class="results-grid">
+        <div class="testimonial-card glass-panel">
+          <div class="portal-icon" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); width: 44px; height: 44px; margin-bottom: 16px;">📈</div>
+          <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">80% Revenue Share</h4>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Keep 80% of every subscription and course enrollment. Transparent, auditable payouts with zero hidden deductions.</p>
+        </div>
+
+        <div class="testimonial-card glass-panel">
+          <div class="portal-icon" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan); width: 44px; height: 44px; margin-bottom: 16px;">🎓</div>
+          <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">45,000+ Hungry Scholars</h4>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Tap into our established network of secondary school, pre-university, and standardized exam students actively preparing for university.</p>
+        </div>
+
+        <div class="testimonial-card glass-panel">
+          <div class="portal-icon" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); width: 44px; height: 44px; margin-bottom: 16px;">⚡</div>
+          <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Direct Local & Foreign Payouts</h4>
+          <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Receive earnings via direct bank transfer in Nigerian Naira (NGN) or USD domiciliary accounts without payment gateway headaches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>&copy; 2026 Greater Light Global Consult & Online Academy. Directed by Engr. Ajibade Opeyemi Phillip.</div>
+        <div><a href="index.html" style="color: var(--accent-cyan);">Back to Academy Homepage</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/courses-data.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/teacher.js"></script>
+</body>
+</html>
