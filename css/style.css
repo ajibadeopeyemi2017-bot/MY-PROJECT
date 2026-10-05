@@ -184,15 +184,6 @@ button, input, select, textarea {
   z-index: 1;
 }
 
-/* Ambient Section Dividers */
-.section-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.25), transparent);
-  margin: 20px 0;
-  pointer-events: none;
-}
-
 /* Glass Tactile Surface */
 .glass-panel {
   background: var(--bg-card);
@@ -899,12 +890,37 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
+   Section Divider & Spacing Architecture
+   ========================================================================== */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  max-width: 1180px;
+  margin: 75px auto;
+  background: linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.25) 20%, rgba(6, 182, 212, 0.5) 50%, rgba(99, 102, 241, 0.25) 80%, transparent 100%);
+  position: relative;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: -1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--accent-cyan), var(--primary-glow));
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.7);
+}
+
+/* ==========================================================================
    Section Header Standard
    ========================================================================== */
 .section-header {
   text-align: center;
   max-width: 780px;
-  margin: 0 auto 55px;
+  margin: 0 auto 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2059,64 +2075,123 @@ button, input, select, textarea {
    Responsive Breakpoints (Desktop, Tablet, Mobile)
    ========================================================================== */
 @media (max-width: 1024px) {
+  .hero-section {
+    padding: 80px 0 95px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 45px;
   }
+
+  .founder-section,
+  .bento-section,
+  .catalog-section,
+  .study-abroad-section,
+  .pricing-section,
+  .booking-section,
+  .results-section,
+  .faq-section {
+    padding: 90px 0;
+  }
+
   .founder-card {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 38px 24px;
+    padding: 42px 28px;
+    gap: 36px;
   }
+
   .founder-photo-wrap {
     margin: 0 auto;
   }
+
   .founder-timeline {
     border-left: none;
     padding-left: 0;
     text-align: left;
   }
+
   .timeline-step {
     padding-left: 0;
   }
+
   .timeline-step::before {
     display: none;
   }
+
   .bento-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 24px;
   }
-  .bento-span-2 {
+
+  .bento-span-2,
+  .bento-span-1 {
     grid-column: span 1;
   }
+
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 520px;
     margin: 0 auto;
+    gap: 28px;
   }
+
   .pricing-card.featured {
     transform: none;
   }
+
   .study-abroad-card {
     grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 38px 24px;
+    gap: 40px;
+    padding: 42px 28px;
   }
+
   .booking-card {
     grid-template-columns: 1fr;
-    padding: 38px 24px;
+    gap: 40px;
+    padding: 42px 28px;
   }
+
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 36px;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 55px 0 80px;
+  .section-divider {
+    margin: 50px auto;
+    max-width: 90%;
   }
 
+  .section-header {
+    margin-bottom: 38px;
+    gap: 12px;
+  }
+
+  .section-desc {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  /* Section Padding with generous breathing room */
+  .hero-section {
+    padding: 45px 0 75px;
+  }
+
+  .founder-section,
+  .bento-section,
+  .catalog-section,
+  .study-abroad-section,
+  .pricing-section,
+  .booking-section,
+  .results-section,
+  .faq-section {
+    padding: 70px 0;
+  }
+
+  /* Navigation */
   .nav-links {
     display: none;
   }
@@ -2130,8 +2205,8 @@ button, input, select, textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-glass);
@@ -2139,83 +2214,193 @@ button, input, select, textarea {
     font-size: 1.3rem;
   }
 
+  /* Hero Section */
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .hero-copy {
+    gap: 18px;
+  }
+
   .hero-title {
-    font-size: clamp(2.1rem, 7.5vw, 2.9rem);
-    line-height: 1.2;
+    font-size: clamp(2.1rem, 7vw, 2.7rem);
+    line-height: 1.22;
   }
 
   .hero-subtitle {
-    font-size: 1.02rem;
+    font-size: 1rem;
+    line-height: 1.65;
   }
 
   .hero-buttons {
     flex-direction: column;
     width: 100%;
     gap: 12px;
+    margin-top: 4px;
   }
 
   .hero-buttons .btn {
     width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
   }
 
   .hero-trust-bar {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 12px;
     width: 100%;
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .trust-item {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .trust-number {
+    font-size: 1.45rem;
   }
 
   .showcase-card {
-    max-height: 380px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
   }
 
   .showcase-img {
-    height: 340px;
-  }
-
-  .floating-badge {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: 10px 0;
+    height: 260px;
+    object-fit: cover;
     width: 100%;
   }
 
+  .floating-badge {
+    position: static !important;
+    margin: 10px 0 0;
+    width: 100%;
+  }
+
+  /* Founder Spotlight */
   .founder-card {
     padding: 28px 18px;
+    border-radius: var(--radius-lg);
+    gap: 24px;
+  }
+
+  .founder-photo-wrap {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
   }
 
   .founder-img {
-    max-width: 270px;
-    height: 360px;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-md);
+  }
+
+  .founder-content {
+    gap: 18px;
   }
 
   .founder-name {
     font-size: 1.85rem;
+    line-height: 1.2;
   }
 
-  .founder-highlights {
+  .founder-designation {
+    font-size: 0.95rem;
+    margin-top: -8px;
+  }
+
+  .founder-bio {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .founder-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 12px 0;
+    border: none;
+    padding: 0;
+  }
+
+  .timeline-step {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-gold);
+  }
+
+  /* Bento Platform */
+  .bento-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 24px;
   }
 
   .bento-card {
-    padding: 26px 18px;
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
   }
 
   .bento-title {
     font-size: 1.35rem;
   }
 
-  .category-pills {
-    padding: 6px 0 12px;
-    -webkit-overflow-scrolling: touch;
+  .bento-preview-widget {
+    padding: 16px;
+    margin-top: 18px;
   }
 
+  /* Catalog Controls */
+  .catalog-controls {
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .search-bar-wrap {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .category-pills {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 4px 2px 14px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pill-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Course Cards Grid */
   .courses-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 24px;
+  }
+
+  .course-card {
+    border-radius: var(--radius-lg);
   }
 
   .course-thumb-wrap {
@@ -2223,56 +2408,103 @@ button, input, select, textarea {
   }
 
   .course-body {
-    padding: 22px 18px;
+    padding: 20px 16px;
   }
 
   .course-title {
-    font-size: 1.18rem;
+    font-size: 1.15rem;
+    min-height: auto;
+  }
+
+  .course-desc {
+    font-size: 0.86rem;
+    min-height: auto;
+    margin-bottom: 14px;
   }
 
   .course-footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 14px;
+  }
+
+  .course-pricing {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
   }
 
   .course-actions {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 6px;
   }
 
-  .course-actions .btn {
-    width: 100%;
+  .course-actions .btn-sm {
+    padding: 9px 4px;
+    font-size: 0.78rem;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
   }
 
+  /* Study Abroad Section */
   .study-abroad-card {
-    padding: 26px 18px;
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
+    gap: 28px;
+  }
+
+  .abroad-flag-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 18px;
+  }
+
+  .flag-pill {
+    font-size: 0.8rem;
+    padding: 6px 12px;
   }
 
   .abroad-flyer-grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
   .flyer-thumb {
-    height: 180px;
+    height: 160px;
   }
 
-  .pricing-section {
-    padding: 80px 0;
+  /* Pricing Section */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    gap: 24px;
   }
 
   .pricing-card {
-    padding: 30px 20px;
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
   }
 
-  .booking-section {
-    padding: 80px 0;
-  }
-
+  /* Booking Calendar */
   .booking-card {
-    padding: 26px 16px;
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
+    gap: 32px;
+  }
+
+  .booking-slots-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .calendar-selector-wrap {
+    padding: 16px;
+    border-radius: var(--radius-md);
   }
 
   .cal-days-grid {
@@ -2280,8 +2512,8 @@ button, input, select, textarea {
   }
 
   .cal-day {
-    padding: 8px 2px;
-    font-size: 0.8rem;
+    padding: 9px 2px;
+    font-size: 0.82rem;
   }
 
   .cal-day-name {
@@ -2289,35 +2521,61 @@ button, input, select, textarea {
     padding-bottom: 4px;
   }
 
-  .booking-slots-list {
+  /* Results & Testimonials */
+  .results-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .testimonial-card {
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .testimonial-quote {
+    font-size: 0.94rem;
+    line-height: 1.65;
   }
 
   .cert-verify-box {
-    padding: 24px 18px;
+    padding: 22px 16px;
     flex-direction: column;
     align-items: stretch;
+    gap: 14px;
+    border-radius: var(--radius-lg);
   }
 
   .cert-input-wrap {
     flex-direction: column;
     max-width: 100%;
+    gap: 10px;
   }
 
   .cert-input-wrap .btn {
     width: 100%;
   }
 
+  /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 34px;
   }
 
+  .footer-bottom {
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Modals on Mobile */
   .modal-window {
     max-width: 95vw;
     width: 100%;
     padding: 26px 18px;
     border-radius: var(--radius-lg);
+    max-height: 90vh;
+    overflow-y: auto;
   }
 }
 
@@ -2345,23 +2603,46 @@ button, input, select, textarea {
   }
 
   .btn {
-    padding: 12px 20px;
-    font-size: 0.9rem;
+    padding: 12px 18px;
+    font-size: 0.88rem;
   }
 
   .btn-lg {
-    padding: 14px 22px;
-    font-size: 0.96rem;
+    padding: 14px 20px;
+    font-size: 0.94rem;
+  }
+
+  .course-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .course-actions a.btn,
+  .course-actions button:first-of-type {
+    grid-column: span 1;
+  }
+
+  .course-actions button:last-of-type {
+    grid-column: span 2;
   }
 
   .abroad-flyer-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .flyer-thumb {
-    height: 230px;
+    height: 200px;
+  }
+
+  .floating-whatsapp-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
   }
 }
+
 
 /* ==========================================================================
    Floating WhatsApp Quick Contact
