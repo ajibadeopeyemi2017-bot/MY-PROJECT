@@ -175,7 +175,7 @@ function submitCourseForPublishing(e) {
     badge: 'New Course',
     instructor: teacherName,
     instructorRole: 'Certified GLGC Educator',
-    instructorImg: 'assets/images/founder.jpg',
+    instructorImg: 'assets/images/founder-avatar.jpg',
     rating: 5.0,
     reviewsCount: 1,
     studentsCount: 1,

@@ -66,7 +66,7 @@ export async function POST(request) {
       badge: 'New Course',
       instructor: body.instructor || 'Guest Faculty',
       instructorRole: 'Certified GLGC Educator',
-      instructorImg: '/assets/images/founder.jpg',
+      instructorImg: '/assets/images/founder-avatar.jpg',
       rating: 5.0,
       reviewsCount: 1,
       studentsCount: 1,

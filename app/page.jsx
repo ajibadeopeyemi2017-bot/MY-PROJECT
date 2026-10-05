@@ -255,7 +255,7 @@ export default function HomePage() {
             <div className="founder-card glass-panel">
               <div className="founder-photo-wrap">
                 <img
-                  src="/assets/images/founder.jpg"
+                  src="/assets/images/founder-portrait.jpg"
                   alt="Engr. Ajibade Opeyemi Phillip - Founder & Director"
                   className="founder-img"
                 />

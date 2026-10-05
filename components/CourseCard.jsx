@@ -62,7 +62,7 @@ export default function CourseCard({ course, currency = 'USD', onPreview, onEnro
         {/* Instructor Section */}
         <div className="course-instructor">
           <img
-            src={course.instructorImg || '/assets/images/founder.jpg'}
+            src={course.instructorImg || '/assets/images/founder-avatar.jpg'}
             alt={course.instructor}
             className="inst-avatar"
           />
