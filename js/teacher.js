@@ -212,10 +212,36 @@ function submitCourseForPublishing(e) {
   document.getElementById('submittedCourseName').innerText = title;
   document.getElementById('submittedSubjectBadge').innerText = subject;
 
+  const classroomBtn = document.getElementById('dashClassroomBtn');
+  if (classroomBtn) {
+    classroomBtn.href = `classroom.html?id=${newCourseObj.id}`;
+  }
+
   showToast(`Congratulations ${teacherName}! Your course "${title}" has been published to GLGC Academy!`, 'success', 'Course Published Live');
 }
 
 // File Upload Simulator
 function simulateUpload(type) {
   showToast(`Simulating upload for ${type}... File uploaded and scanned successfully!`, 'success');
+}
+
+// Mobile Menu Drawer for Teacher Portal
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  if (drawer && overlay) {
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById('mobileNavDrawer');
+  const overlay = document.getElementById('mobileDrawerOverlay');
+  if (drawer && overlay) {
+    drawer.classList.remove('open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 }

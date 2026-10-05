@@ -2329,3 +2329,47 @@ button, input, select, textarea {
   }
 }
 
+/* ==========================================================================
+   Floating WhatsApp Quick Contact
+   ========================================================================== */
+.floating-whatsapp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4), 0 0 20px rgba(37, 211, 102, 0.3);
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}
+
+.floating-whatsapp-btn:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 16px 35px rgba(37, 211, 102, 0.6), 0 0 30px rgba(37, 211, 102, 0.5);
+  color: #ffffff;
+}
+
+.floating-whatsapp-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  animation: waPulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+

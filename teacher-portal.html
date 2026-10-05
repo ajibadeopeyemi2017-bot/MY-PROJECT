@@ -39,9 +39,40 @@
       <div class="nav-actions">
         <a href="index.html" class="btn btn-outline btn-sm">Return to Academy</a>
         <a href="#wizard" class="btn btn-primary btn-sm">Join Faculty</a>
+        <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+          &#9776;
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Dedicated Mobile Navigation Drawer Overlay & Panel -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileMenu()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-drawer-head">
+      <div class="brand-logo">
+        <div class="brand-icon" style="width: 38px; height: 38px; font-size: 1.1rem; background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);">GL</div>
+        <div class="brand-text">
+          <span class="brand-title" style="font-size: 1.05rem;">GREATER LIGHT</span>
+          <span class="brand-subtitle" style="font-size: 0.68rem;">INSTRUCTOR PORTAL</span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" onclick="closeMobileMenu()" aria-label="Close navigation">&times;</button>
+    </div>
+
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" onclick="closeMobileMenu()">Academy Home</a></li>
+      <li><a href="#calculator" onclick="closeMobileMenu()">Earnings Calculator (80%)</a></li>
+      <li><a href="#wizard" onclick="closeMobileMenu()">Apply as Teacher</a></li>
+      <li><a href="#benefits" onclick="closeMobileMenu()">Instructor Benefits</a></li>
+      <li><a href="classroom.html" onclick="closeMobileMenu()">Student Classroom Preview</a></li>
+    </ul>
+
+    <div class="mobile-drawer-actions">
+      <a href="index.html" class="btn btn-outline" style="width: 100%;">Back to Academy</a>
+      <a href="#wizard" class="btn btn-primary" style="width: 100%;" onclick="closeMobileMenu()">Start Application</a>
+    </div>
+  </aside>
 
   <!-- Hero Section -->
   <section class="teacher-hero-section">
@@ -344,7 +375,7 @@
 
             <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
               <a href="index.html#courses" class="btn btn-primary">View Course in Public Catalog</a>
-              <a href="classroom.html" class="btn btn-outline">Enter Classroom Preview</a>
+              <a href="classroom.html" class="btn btn-outline" id="dashClassroomBtn">Enter Classroom Preview</a>
               <button class="btn btn-cyan" onclick="goToStep(3)">Create Another Course</button>
             </div>
           </div>

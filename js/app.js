@@ -5,6 +5,7 @@ let currentCurrency = 'USD'; // 'USD' or 'NGN'
 let currentCategory = 'all';
 let currentSearch = '';
 let billingCycle = 'monthly'; // 'monthly' or 'annual'
+let activeCheckoutCourseId = 'fmath-02';
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
@@ -193,6 +194,7 @@ function renderCourses() {
               <span class="price-sub">Included in All-Access</span>
             </div>
             <div class="course-actions">
+              <a href="classroom.html?id=${course.id}" class="btn btn-outline btn-sm" title="Preview Classroom">Classroom</a>
               <button class="btn btn-outline btn-sm" onclick="openSyllabusModal('${course.id}')" title="Preview Syllabus">Syllabus</button>
               <button class="btn btn-primary btn-sm" onclick="openCheckoutModal('${course.id}')">Enroll</button>
             </div>
@@ -272,6 +274,7 @@ function openSyllabusModal(courseId) {
 
 // Checkout & Enrollment Modal
 function openCheckoutModal(courseId) {
+  activeCheckoutCourseId = courseId || 'fmath-02';
   const modal = document.getElementById('checkoutModal');
   const detailsEl = document.getElementById('checkoutItemDetails');
   const totalEl = document.getElementById('checkoutTotalAmount');
@@ -318,7 +321,8 @@ function processPaymentSimulator(e) {
 
     setTimeout(() => {
       closeModal('checkoutModal');
-      window.location.href = 'classroom.html';
+      const targetId = activeCheckoutCourseId && activeCheckoutCourseId !== 'all-access' && activeCheckoutCourseId !== 'single-pass' && activeCheckoutCourseId !== 'elite-pass' ? activeCheckoutCourseId : 'fmath-02';
+      window.location.href = `classroom.html?id=${targetId}`;
     }, 1200);
   }, 1000);
 }
@@ -464,4 +468,74 @@ function submitConsultForm(e) {
   showToast('Study abroad consultation request received! An advisor from Ile-Ife office will reach out via WhatsApp/Email within 2 hours.', 'success', 'Request Submitted');
   closeModal('consultModal');
   e.target.reset();
+}
+
+// Legal & Academic Honor Code Modal
+function openLegalModal(type) {
+  const modal = document.getElementById('legalModal');
+  const content = document.getElementById('legalModalContent');
+  if (!modal || !content) return;
+
+  if (type === 'privacy') {
+    content.innerHTML = `
+      <div class="badge badge-purple" style="margin-bottom: 12px;">Data & Trust</div>
+      <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">Privacy & Academic Confidentiality</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 14px;">
+        At Greater Light Global Consult & Online Academy (GLGC), founded by Engr. Ajibade Opeyemi Phillip, we protect student identity, academic records, and university admissions credentials with utmost diligence.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">1. Information Usage</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
+        All student contact numbers, WhatsApp lines, and emails are exclusively used for classroom access, course notifications, diagnostic reports, and direct advisory consultations. We never sell or share data with 3rd parties.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">2. Verifiable Credentials & Transcripts</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
+        Certificate identifiers (e.g. GLGC-2026-XXXX) are cryptographically maintained to enable authentic verification by foreign universities, scholarship boards, and employers worldwide.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">3. Direct Inquiries</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+        For privacy questions, reach our secretariat at <strong>ajibadeopeyemi2017@gmail.com</strong> or our headquarters in Ile-Ife, Osun State, Nigeria.
+      </p>
+    `;
+  } else if (type === 'terms') {
+    content.innerHTML = `
+      <div class="badge badge-gold" style="margin-bottom: 12px;">Terms of Platform Use</div>
+      <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">Terms of Service & Educator Accord</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 14px;">
+        Welcome to Greater Light Online Academy. By utilizing our curricula, virtual classroom, or educator registration portal, you agree to these governing terms.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">1. Student Subscriptions & All-Access Passes</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
+        Subscriptions grant individual, non-transferable rights to streaming lessons, formula sheets, and live diagnostic quizzes. Unauthorized video scraping or account distribution violates platform policy.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">2. 80% Educator Revenue Share Policy</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
+        Verified educators who publish courses through our Studio retain 80% of net enrollment earnings, disbursed weekly via direct bank transfer in Nigerian Naira (NGN) or USD domiciliary accounts.
+      </p>
+      <h4 style="color: #cbd5e1; font-size: 1rem; margin: 16px 0 8px;">3. Study Abroad Advisory</h4>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+        GLGC provides full-cycle university application guidance and scholarship placement support. Admissions determinations are governed by the respective global universities and visa embassies.
+      </p>
+    `;
+  } else {
+    content.innerHTML = `
+      <div class="badge badge-emerald" style="margin-bottom: 12px;">Honor Code</div>
+      <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 14px;">GLGC Academic Honor Code</h3>
+      <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; margin-bottom: 14px;">
+        "Academic excellence without integrity is hollow." Established by Director Engr. Ajibade Opeyemi Phillip, our Honor Code guides every scholar and educator.
+      </p>
+      <div style="background: rgba(16,185,129,0.08); border-left: 3px solid #10b981; padding: 14px 18px; border-radius: 4px; margin-bottom: 16px;">
+        <strong style="color: #34d399; font-size: 0.95rem;">The Scholar's Pledge:</strong>
+        <p style="color: #e2e8f0; font-size: 0.88rem; font-style: italic; margin-top: 4px;">
+          "I pledge on my honor to solve diagnostic assessments, quizzes, and problem sets with intellectual honesty, to uphold rigor, to support fellow learners with respect, and to let Greater Light guide my academic ascent."
+        </p>
+      </div>
+      <ul style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; padding-left: 20px;">
+        <li>Take all checkpoint quizzes and mock exams without unauthorized aid or answer key distribution.</li>
+        <li>Engage fellow scholars and faculty with mutual dignity and intellectual curiosity.</li>
+        <li>Submit genuine transcripts and qualifications when applying for international admissions.</li>
+      </ul>
+    `;
+  }
+
+  modal.classList.add('active');
 }

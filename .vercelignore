@@ -1,0 +1,16 @@
+# Version control
+.git
+.gitignore
+
+# Office documents & raw uncompressed assets
+*.docx
+DSC_*.JPG
+ChatGPT Image*.png
+
+# Next.js local artifacts
+.next
+out
+coverage
+
+# Dependency directories
+node_modules

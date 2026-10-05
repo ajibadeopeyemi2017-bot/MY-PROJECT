@@ -64,8 +64,8 @@ const INITIAL_COURSES = [
       {
         question: "If (x - 2) is a factor of f(x) = 2x³ - 3x² + kx - 6, find the value of k.",
         options: ["k = -1", "k = 1", "k = 2", "k = -5"],
-        correct: 0,
-        explanation: "By Factor Theorem, f(2) = 0 => 2(8) - 3(4) + 2k - 6 = 0 => 16 - 12 + 2k - 6 = 0 => 2k - 2 = 0 => k = 1. Wait, 16 - 12 - 6 = -2, so 2k = 2 => k = 1."
+        correct: 1,
+        explanation: "By the Factor Theorem, f(2) = 0 => 2(2)³ - 3(2)² + k(2) - 6 = 0 => 16 - 12 + 2k - 6 = 0 => 2k - 2 = 0 => 2k = 2 => k = 1."
       },
       {
         question: "What is the sum to infinity of the GP: 16, 8, 4, 2...?",

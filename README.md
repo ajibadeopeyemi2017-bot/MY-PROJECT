@@ -37,28 +37,37 @@ The platform provides a dual-portal ecosystem:
 
 ---
 
-## 💻 Tech Stack & Design System
+## 💻 Tech Stack & Architecture
 
-- **Core:** Semantic HTML5 & Modular JavaScript (ES6+).
-- **Styling:** Custom Vanilla CSS3 featuring a **Modern Dark Glassmorphism** design system with tactile inner bevel reflections.
+- **Frontend:** **React 18** with Next.js 14 App Router (modular components, reactive state, currency toggles, interactive video player, diagnostic quiz engine, and 80% revenue calculator).
+- **Backend:** **Next.js 14 Route Handlers** (`/app/api/...`) powering course publishing, student admissions consultations, live mentorship bookings, cryptographic certificate verifications, and classroom discussions.
+- **Styling:** Custom Vanilla CSS3 featuring an elevated **Modern Dark Glassmorphism** design system with glowing borders and tactile inner bevel reflections.
 - **Typography:** [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans), [Outfit](https://fonts.google.com/specimen/Outfit), and [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono).
-- **Responsive Architecture:** Fully optimized for mobile, tablet, and desktop screens with a dedicated mobile slide-out navigation drawer.
+- **Deployment & CI/CD:** Ready for **GitHub Actions** CI/CD deployment to **GitHub Pages** or 1-click **Vercel** serverless hosting.
 
 ---
 
 ## 🚀 Getting Started Locally
 
-No complex dependencies required. Simply open `index.html` in any modern web browser, or run a local HTTP server:
-
 ```bash
-# Using Python
-python -m http.server 3000
+# 1. Install dependencies
+npm install
 
-# Using Node / npx
-npx serve .
+# 2. Run local development server
+npm run dev
+
+# 3. Open in your browser
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Production Build:
+```bash
+npm run build
+npm run start
+```
+
+### Deployment:
+For complete step-by-step instructions on deploying to **GitHub Pages**, **Vercel**, or a self-hosted **Node.js server**, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ---
 

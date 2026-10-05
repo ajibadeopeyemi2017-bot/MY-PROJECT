@@ -801,15 +801,19 @@
           </div>
           <div class="footer-contact-item">
             <span>📞</span>
-            <span class="mono-accent">08050367351 / 08163776464 / 09165332314</span>
+            <span class="mono-accent">
+              <a href="tel:08050367351" style="color: inherit; text-decoration: underline;">08050367351</a> / 
+              <a href="tel:08163776464" style="color: inherit; text-decoration: underline;">08163776464</a> / 
+              <a href="tel:09165332314" style="color: inherit; text-decoration: underline;">09165332314</a>
+            </span>
           </div>
           <div class="footer-contact-item">
             <span>✉️</span>
-            <span>ajibadeopeyemi2017@gmail.com</span>
+            <span><a href="mailto:ajibadeopeyemi2017@gmail.com" style="color: var(--accent-cyan);">ajibadeopeyemi2017@gmail.com</a></span>
           </div>
           <div class="footer-contact-item">
             <span>🌐</span>
-            <span>greaterlightglobalconsult.com</span>
+            <span><a href="https://greaterlightglobalconsult.com" target="_blank" rel="noopener" style="color: #cbd5e1;">greaterlightglobalconsult.com</a></span>
           </div>
         </div>
       </div>
@@ -817,9 +821,9 @@
       <div class="footer-bottom">
         <div>&copy; 2026 Greater Light Global Consult & Online Academy. Directed by Engr. Ajibade Opeyemi Phillip.</div>
         <div style="display: flex; gap: 20px;">
-          <a href="#" style="color: var(--text-dim);">Privacy Policy</a>
-          <a href="#" style="color: var(--text-dim);">Terms of Service</a>
-          <a href="#" style="color: var(--text-dim);">Academic Honor Code</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('privacy')" style="color: var(--text-dim);">Privacy Policy</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('terms')" style="color: var(--text-dim);">Terms of Service</a>
+          <a href="javascript:void(0)" onclick="openLegalModal('honor')" style="color: var(--text-dim);">Academic Honor Code</a>
         </div>
       </div>
     </div>
@@ -934,6 +938,25 @@
       <div id="certModalContent"></div>
     </div>
   </div>
+
+  <!-- Legal & Academic Honor Code Modal -->
+  <div class="modal-overlay" id="legalModal">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeModal('legalModal')">&times;</button>
+      <div id="legalModalContent"></div>
+      <div style="margin-top: 24px; text-align: right;">
+        <button class="btn btn-primary btn-sm" onclick="closeModal('legalModal')">Understood & Acknowledged</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Support Button -->
+  <a href="https://wa.me/2348050367351?text=Hello%20Engr.%20Ajibade,%20I%20would%20like%20to%20inquire%20about%20Greater%20Light%20Academy" target="_blank" rel="noopener" class="floating-whatsapp-btn" title="Chat with Director Engr. Ajibade on WhatsApp" aria-label="WhatsApp Support">
+    <div class="floating-whatsapp-pulse"></div>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.761.458 3.417 1.258 4.862l-1.332 4.869 4.997-1.31c1.401.767 3.003 1.202 4.707 1.202 5.514 0 10-4.486 10-10 0-5.514-4.486-10-10-10z"/>
+    </svg>
+  </a>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>

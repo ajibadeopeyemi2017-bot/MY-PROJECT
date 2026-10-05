@@ -18,7 +18,7 @@
 
   <!-- Classroom Navigation Bar -->
   <nav class="classroom-nav">
-    <div style="display: flex; align-items: center; gap: 24px;">
+    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
       <a href="index.html" class="classroom-back-link">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
         <span>Back to Academy</span>
@@ -26,20 +26,27 @@
 
       <div class="brand-icon" style="width: 32px; height: 32px; font-size: 0.95rem;">GL</div>
 
-      <div class="classroom-course-title-nav">
-        <span id="navCourseTitle">Loading Course...</span>
+      <!-- Course Switcher Dropdown -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <select id="courseSelector" class="classroom-course-select" aria-label="Select Enrolled Course" onchange="switchCourseFromSelect(this.value)">
+          <!-- Rendered dynamically -->
+        </select>
         <span class="classroom-progress-pill" id="navProgressPill">0% Progress</span>
       </div>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
       <button class="btn btn-primary btn-sm" onclick="markCurrentLessonCompleted()" id="markDoneBtn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
         <span>Mark Lesson Complete</span>
       </button>
 
-      <div style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--border-glass); padding-left: 16px;">
-        <div class="author-avatar" style="width: 36px; height: 36px; font-size: 0.85rem;">ST</div>
+      <button class="btn-cert-claim" id="claimCertBtn" onclick="openCertClaimModal()" title="View and claim your official credential">
+        🎓 Claim Certificate
+      </button>
+
+      <div style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--border-glass); padding-left: 14px;">
+        <div class="author-avatar" style="width: 34px; height: 34px; font-size: 0.85rem;">ST</div>
         <div style="display: flex; flex-direction: column;">
           <strong style="font-size: 0.82rem; color: #fff;">Student Portal</strong>
           <small style="font-size: 0.7rem; color: var(--accent-emerald);">All-Access Active</small>
@@ -56,8 +63,9 @@
       
       <!-- Video Screen -->
       <div class="video-screen-container" id="videoContainer">
-        <div class="video-poster-layer" style="background-image: url('assets/images/stem_hologram.jpg');"></div>
-        <div class="video-watermark">GLGC Academy • Live Interactive Lesson</div>
+        <div class="video-poster-layer" id="videoPoster" style="background-image: url('assets/images/stem_hologram.jpg');"></div>
+        <canvas id="videoVisualizerCanvas" class="video-visualizer-canvas"></canvas>
+        <div class="video-watermark">GLGC Academy • Live Interactive Masterclass</div>
 
         <button class="play-central-btn" id="centralPlayBtn" aria-label="Play video lecture">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -76,7 +84,10 @@
               <button class="control-btn" id="miniPlayBtn" aria-label="Play or pause">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               </button>
-              <span class="video-timestamp" id="videoTimeDisplay">02:22 / 30:40</span>
+              <button class="control-btn" id="volumeBtn" onclick="toggleMute()" aria-label="Toggle mute" title="Mute/Unmute">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              </button>
+              <span class="video-timestamp" id="videoTimeDisplay">00:00 / 30:40</span>
             </div>
 
             <div class="controls-right">
@@ -88,12 +99,34 @@
                 <option value="2">2.0x</option>
               </select>
 
-              <button class="control-btn" onclick="showToast('HD 1080p Quality streaming active', 'info')" title="Resolution Quality">
+              <button class="control-btn" onclick="showToast('HD 1080p Stream Active', 'info')" title="Resolution Quality">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </button>
+
+              <button class="control-btn" id="fullscreenBtn" onclick="toggleFullscreen()" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
               </button>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Quick Lesson Navigation Bar -->
+      <div class="video-nav-subbar">
+        <button class="video-nav-btn" id="prevLessonBtn" onclick="goToAdjacentLesson(-1)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Previous Lesson</span>
+        </button>
+
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); cursor: pointer;">
+          <input type="checkbox" id="autoNextToggle" checked style="accent-color: var(--accent-cyan);" />
+          <span>Autoplay next lesson when finished</span>
+        </label>
+
+        <button class="video-nav-btn" id="nextLessonBtn" onclick="goToAdjacentLesson(1)">
+          <span>Next Lesson</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
 
       <!-- Lesson Header Row -->
@@ -104,9 +137,9 @@
         </div>
 
         <div style="display: flex; gap: 10px;">
-          <button class="btn btn-outline btn-sm" onclick="downloadResource('Formula_Compendium.pdf')">
+          <button class="btn btn-outline btn-sm" id="headerResourceBtn" onclick="downloadActiveCourseResource()">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Formula Sheet</span>
+            <span id="headerResourceBtnText">Download Study Deck</span>
           </button>
         </div>
       </div>
@@ -122,43 +155,21 @@
       <!-- Tab 1: Lecture Notes -->
       <div class="c-tab-pane active" id="tabNotes">
         <div class="notes-card" id="notesContentArea">
-          <!-- Rendered by js/classroom.js -->
+          <!-- Rendered dynamically by js/classroom.js -->
         </div>
       </div>
 
       <!-- Tab 2: Practice Quiz -->
       <div class="c-tab-pane" id="tabQuiz">
         <div class="quiz-box" id="quizContentArea">
-          <!-- Rendered by js/classroom.js -->
+          <!-- Rendered dynamically by js/classroom.js -->
         </div>
       </div>
 
       <!-- Tab 3: Downloadable Materials -->
       <div class="c-tab-pane" id="tabResources">
-        <div class="resources-grid">
-          <div class="resource-download-card">
-            <div>
-              <strong style="display: block; font-size: 0.95rem; color: #fff;">Calculus & Algebra Cheat Sheet</strong>
-              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 4.2 MB • Prepared by Engr. Ajibade</small>
-            </div>
-            <button class="btn btn-cyan btn-sm" onclick="downloadResource('Calculus_Cheat_Sheet.pdf')">Download</button>
-          </div>
-
-          <div class="resource-download-card">
-            <div>
-              <strong style="display: block; font-size: 0.95rem; color: #fff;">Digital SAT Math Traps Guide</strong>
-              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 2.8 MB • Bluebook strategies</small>
-            </div>
-            <button class="btn btn-cyan btn-sm" onclick="downloadResource('SAT_Math_Traps.pdf')">Download</button>
-          </div>
-
-          <div class="resource-download-card">
-            <div>
-              <strong style="display: block; font-size: 0.95rem; color: #fff;">IELTS Band 8.5 Task 2 Templates</strong>
-              <small style="color: var(--text-muted); font-size: 0.78rem;">PDF • 1.6 MB • 20 High-Band Essays</small>
-            </div>
-            <button class="btn btn-cyan btn-sm" onclick="downloadResource('IELTS_Band85_Templates.pdf')">Download</button>
-          </div>
+        <div class="resources-grid" id="resourcesContentArea">
+          <!-- Rendered dynamically by js/classroom.js -->
         </div>
       </div>
 
@@ -215,6 +226,57 @@
     </aside>
 
   </main>
+
+  <!-- Certificate of Mastery Modal -->
+  <div class="modal-overlay" id="certClaimModal">
+    <div class="modal-window cert-modal-window">
+      <button class="modal-close-btn" onclick="closeCertModal()">&times;</button>
+      
+      <div class="cert-outer-border" id="printableCertArea">
+        <div class="cert-seal">★</div>
+        <div class="cert-subtitle">Greater Light Global Consult & Online Academy</div>
+        <h2 class="cert-title-main">Certificate of Mastery</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 8px;">This is officially and proudly awarded to</p>
+        
+        <input type="text" id="certStudentNameInput" class="cert-student-input" value="Oluwaseun Bakare" title="Click to edit your name for the certificate" />
+        
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin: 0 auto 12px; line-height: 1.6;">
+          for outstanding academic performance and successful completion of all diagnostic milestones, problem sets, and curriculum requirements in:
+        </p>
+        
+        <h3 id="certCourseTitle" style="font-size: 1.35rem; color: #fbbf24; margin-bottom: 12px;">Further Mathematics: Comprehensive Calculus & Mechanics</h3>
+        
+        <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px; flex-wrap: wrap;">
+          <span>Issued: <strong id="certIssueDate" style="color: #fff;">October 5, 2026</strong></span>
+          <span>Credential ID: <strong id="certCredId" style="color: var(--accent-cyan); font-family: monospace;">GLGC-2026-8842</strong></span>
+          <span style="color: #34d399; font-weight: 700;">● Verified Authentic</span>
+        </div>
+
+        <div class="cert-signatures-row">
+          <div class="cert-sig-box">
+            <span class="cert-sig-script">Ajibade O. Phillip</span>
+            <div style="border-top: 1px solid #475569; width: 190px; padding-top: 4px;">
+              <strong style="font-size: 0.82rem; color: #fff; display: block;">Engr. Ajibade Opeyemi Phillip</strong>
+              <small style="color: var(--text-muted); font-size: 0.72rem;">Civil Engineer & Academic Director</small>
+            </div>
+          </div>
+          <div class="cert-sig-box">
+            <div style="width: 70px; height: 70px; border-radius: 50%; border: 2px dashed #fbbf24; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #fbbf24; text-transform: uppercase; font-weight: 800; text-align: center; padding: 4px; line-height: 1.2;">
+              OFFICIAL ACADEMY SEAL
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-modal-actions" style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <button class="btn btn-outline btn-sm" onclick="closeCertModal()">Close</button>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-cyan btn-sm" onclick="verifyCertOnline()">Verify on Academy Hub</button>
+          <button class="btn btn-gold btn-sm" onclick="printCertificate()">🖨️ Print / Save PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>
