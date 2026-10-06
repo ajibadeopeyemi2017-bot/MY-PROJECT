@@ -30,19 +30,135 @@
         </div>
       </a>
 
-      <!-- Navigation Links -->
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#courses" class="active">Courses</a></li>
-        <li><a href="#founder">Founder</a></li>
-        <li><a href="#bento-core">Platform</a></li>
+      <!-- Central Dual-Persona Role Switcher -->
+      <div class="role-segmented-switcher" role="tablist" aria-label="Audience Switcher">
+        <button type="button" class="role-pill-btn active" id="roleBtnStudents" onclick="setNavPersona('students')" role="tab" aria-selected="true" title="Switch to Student View">
+          <span class="role-icon">🎓</span>
+          <span class="role-text">For Students</span>
+        </button>
+        <button type="button" class="role-pill-btn" id="roleBtnTeachers" onclick="setNavPersona('teachers')" role="tab" aria-selected="false" title="Switch to Teacher View">
+          <span class="role-icon">👨‍🏫</span>
+          <span class="role-text">For Teachers</span>
+          <span class="role-badge">80% Payout</span>
+        </button>
+      </div>
+
+      <!-- Navigation Links: Student Persona (Active by Default) -->
+      <ul class="nav-role-group active" id="navRoleStudents">
+        <li class="has-dropdown">
+          <a href="#courses" class="dropdown-trigger">
+            <span>Explore Courses</span>
+            <span class="dropdown-chevron">▼</span>
+          </a>
+          <div class="nav-dropdown-menu mega-menu">
+            <div class="mega-grid">
+              <div>
+                <div class="mega-col-header">Core STEM Disciplines</div>
+                <a href="#courses" onclick="filterCatalogFromNav('all')" class="mega-link-item">
+                  <div class="mega-item-icon">📐</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Pure Mathematics</span>
+                    <span class="mega-item-sub">Algebra, Functions, Coordinate Geometry</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('further maths')" class="mega-link-item">
+                  <div class="mega-item-icon">♾️</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Further Mathematics</span>
+                    <span class="mega-item-sub">Calculus, Vectors, Matrices & ODEs</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('physics')" class="mega-link-item">
+                  <div class="mega-item-icon">⚡</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Physics</span>
+                    <span class="mega-item-sub">Mechanics, Waves & Electromagnetism</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('chemistry')" class="mega-link-item">
+                  <div class="mega-item-icon">🧪</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Chemistry</span>
+                    <span class="mega-item-sub">Organic Mechanisms & Stoichiometry</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('biology')" class="mega-link-item">
+                  <div class="mega-item-icon">🧬</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Biology & English</span>
+                    <span class="mega-item-sub">Genetics, Physiology & Academic Writing</span>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <div class="mega-col-header gold">Standardized Exam Masterclasses</div>
+                <a href="#courses" onclick="filterCatalogFromNav('sat')" class="mega-link-item">
+                  <div class="mega-item-icon" style="background: rgba(245, 158, 11, 0.15);">🎯</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Digital SAT (Target 1550+)</span>
+                    <span class="mega-item-sub">Adaptive Module Tactics & Desmos</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('ielts')" class="mega-link-item">
+                  <div class="mega-item-icon" style="background: rgba(245, 158, 11, 0.15);">🗣️</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">IELTS (Target Band 8.5)</span>
+                    <span class="mega-item-sub">Academic & General Training</span>
+                  </div>
+                </a>
+                <a href="#courses" onclick="filterCatalogFromNav('gre')" class="mega-link-item">
+                  <div class="mega-item-icon" style="background: rgba(245, 158, 11, 0.15);">📊</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">GRE & GMAT Focus</span>
+                    <span class="mega-item-sub">Quantitative Elimination & Reasoning</span>
+                  </div>
+                </a>
+                <a href="#study-abroad" class="mega-link-item">
+                  <div class="mega-item-icon" style="background: rgba(16, 185, 129, 0.15);">🌍</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Study Abroad Admissions</span>
+                    <span class="mega-item-sub">USA, UK, Canada & Europe Advisory</span>
+                  </div>
+                </a>
+                <a href="classroom.html" class="mega-link-item">
+                  <div class="mega-item-icon" style="background: rgba(59, 130, 246, 0.15);">💻</div>
+                  <div class="mega-item-body">
+                    <span class="mega-item-title">Virtual Classroom Portal</span>
+                    <span class="mega-item-sub">Interactive Lectures, Notes & Quizzes</span>
+                  </div>
+                </a>
+              </div>
+              <div class="mega-footer-bar">
+                <span>Are you a senior educator or exam tutor?</span>
+                <a href="teacher-portal.html" onclick="setNavPersona('teachers')">Teach with us and earn 80% revenue share &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="classroom.html" style="color: #34d399; font-weight: 700;"><span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981; margin-right: 4px;"></span>Classroom</a></li>
         <li><a href="#study-abroad">Study Abroad</a></li>
-        <li><a href="#pricing">Subscriptions</a></li>
-        <li><a href="#mentorship">Live Mentorship</a></li>
-        <li><a href="teacher-portal.html" style="color: #c084fc;">For Teachers ★</a></li>
+        <li><a href="#mentorship">Mentorship</a></li>
+        <li><a href="#pricing">Tuition</a></li>
+      </ul>
+
+      <!-- Navigation Links: Teacher Persona -->
+      <ul class="nav-role-group" id="navRoleTeachers">
+        <li><a href="teacher-portal.html#calculator">💰 80% Calculator</a></li>
+        <li><a href="teacher-portal.html#wizard">📝 Apply as Teacher</a></li>
+        <li><a href="teacher-portal.html#wizard">🛠️ Course Studio</a></li>
+        <li><a href="teacher-portal.html#benefits">🏆 Educator Benefits</a></li>
+        <li><a href="classroom.html" style="color: var(--accent-cyan);">Preview Student Portal</a></li>
       </ul>
 
       <!-- Nav Actions & Currency Switcher -->
       <div class="nav-actions">
+        <!-- Quick Spotlight Search Trigger -->
+        <button class="nav-search-btn" onclick="openSpotlightSearch()" aria-label="Search Courses and Portals" title="Search (Ctrl + K)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span style="font-size: 0.8rem;">Search...</span>
+          <kbd>⌘K</kbd>
+        </button>
+
         <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Bright / Dark Mode" title="Toggle Bright / Dark Mode">
           <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
           <span id="themeToggleText">Bright</span>
@@ -77,23 +193,139 @@
       <button class="mobile-drawer-close" onclick="closeMobileMenu()" aria-label="Close navigation">&times;</button>
     </div>
 
-    <ul class="mobile-nav-list">
-      <li><a href="#courses" onclick="closeMobileMenu()">Explore Courses</a></li>
-      <li><a href="#founder" onclick="closeMobileMenu()">About Engr. Ajibade</a></li>
-      <li><a href="#bento-core" onclick="closeMobileMenu()">Platform Ecosystem</a></li>
-      <li><a href="#study-abroad" onclick="closeMobileMenu()">Study Abroad Admissions</a></li>
-      <li><a href="#pricing" onclick="closeMobileMenu()">Subscriptions & Fees</a></li>
-      <li><a href="#mentorship" onclick="closeMobileMenu()">Live Mentorship</a></li>
-      <li><a href="teacher-portal.html" style="color: #c084fc;">For Teachers (80% Payout) ★</a></li>
-    </ul>
+    <!-- Quick Role Action Cards -->
+    <div class="drawer-quick-cards">
+      <a href="classroom.html" class="drawer-card drawer-card-student">
+        <span class="drawer-card-icon">🎓</span>
+        <span class="drawer-card-title">Student Portal</span>
+        <span class="drawer-card-sub">Classroom & Quizzes &rarr;</span>
+      </a>
+      <a href="teacher-portal.html" class="drawer-card drawer-card-teacher">
+        <span class="drawer-card-icon">💼</span>
+        <span class="drawer-card-title">Teacher Portal</span>
+        <span class="drawer-card-sub">Earn 80% Payout &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Segmented Mobile Drawer Role Tabs -->
+    <div class="drawer-role-tabs">
+      <button type="button" class="drawer-tab-btn active" id="drawerTabStudents" onclick="setDrawerTab('students')">
+        🎓 Students
+      </button>
+      <button type="button" class="drawer-tab-btn" id="drawerTabTeachers" onclick="setDrawerTab('teachers')">
+        👨‍🏫 Teachers
+      </button>
+      <button type="button" class="drawer-tab-btn" id="drawerTabAcademy" onclick="setDrawerTab('academy')">
+        🏛️ Academy
+      </button>
+    </div>
+
+    <!-- Tab Pane 1: For Students -->
+    <div class="drawer-pane active" id="drawerPaneStudents">
+      <a href="#courses" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">📚</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">All 11 STEM & Exam Courses</span>
+          <span class="drawer-nav-desc">Pure Maths, SAT, Further Maths, IELTS</span>
+        </div>
+      </a>
+      <a href="classroom.html" class="drawer-nav-item">
+        <div class="drawer-nav-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">💻</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Virtual Classroom Portal</span>
+          <span class="drawer-nav-desc">Video Player, Notes & Diagnostic Quizzes</span>
+        </div>
+        <span class="drawer-badge emerald">Live</span>
+      </a>
+      <a href="#study-abroad" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">🌍</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Study Abroad Admissions</span>
+          <span class="drawer-nav-desc">USA, UK, Canada & Europe Guidance</span>
+        </div>
+      </a>
+      <a href="#mentorship" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">📅</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Live 1-on-1 Mentorship</span>
+          <span class="drawer-nav-desc">Personalized sessions with Engr. Ajibade</span>
+        </div>
+      </a>
+      <a href="#pricing" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">💳</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Subscriptions & Pricing</span>
+          <span class="drawer-nav-desc">All-access monthly & annual passes</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Tab Pane 2: For Teachers -->
+    <div class="drawer-pane" id="drawerPaneTeachers">
+      <a href="teacher-portal.html#calculator" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">💰</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">80% Revenue Calculator</span>
+          <span class="drawer-nav-desc">Calculate weekly and monthly payouts</span>
+        </div>
+        <span class="drawer-badge purple">80% Share</span>
+      </a>
+      <a href="teacher-portal.html#wizard" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">📝</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Educator Onboarding Wizard</span>
+          <span class="drawer-nav-desc">4-step application & faculty profile</span>
+        </div>
+      </a>
+      <a href="teacher-portal.html#wizard" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">🛠️</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Course Studio & Syllabus</span>
+          <span class="drawer-nav-desc">Upload lectures, notes & practice decks</span>
+        </div>
+      </a>
+      <a href="teacher-portal.html#benefits" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">🏆</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Faculty Benefits & Terms</span>
+          <span class="drawer-nav-desc">Weekly bank payouts, global student reach</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Tab Pane 3: Academy & Leadership -->
+    <div class="drawer-pane" id="drawerPaneAcademy">
+      <a href="#founder" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">👨‍💼</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Director Engr. Ajibade Opeyemi</span>
+          <span class="drawer-nav-desc">15+ years STEM & exam coordination</span>
+        </div>
+      </a>
+      <a href="#bento-core" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">🌐</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Platform Ecosystem</span>
+          <span class="drawer-nav-desc">Features, certifications & pedagogy</span>
+        </div>
+      </a>
+      <a href="#faq" onclick="closeMobileMenu()" class="drawer-nav-item">
+        <div class="drawer-nav-icon">❓</div>
+        <div class="drawer-nav-text">
+          <span class="drawer-nav-title">Help & FAQs</span>
+          <span class="drawer-nav-desc">Common questions answered</span>
+        </div>
+      </a>
+    </div>
 
     <div class="mobile-drawer-actions">
       <button class="theme-toggle-btn" onclick="toggleTheme()" style="width: 100%; justify-content: center; padding: 10px;" aria-label="Toggle Bright / Dark Mode">
         <span class="theme-toggle-icon" id="mobileThemeToggleIcon">☀️</span>
         <span id="mobileThemeToggleText">Bright Theme</span>
       </button>
-      <a href="classroom.html" class="btn btn-outline" style="width: 100%;">Student Classroom</a>
-      <a href="teacher-portal.html" class="btn btn-primary" style="width: 100%;">Teach With Us</a>
+      <button class="nav-search-btn" onclick="closeMobileMenu(); openSpotlightSearch();" style="width: 100%; justify-content: center; padding: 10px;">
+        <span>🔍 Search All Subjects & Tools</span>
+      </button>
     </div>
   </aside>
 
@@ -964,8 +1196,65 @@
     <div class="floating-whatsapp-pulse"></div>
     <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.392-12.416c-5.514 0-10 4.486-10 10 0 1.761.458 3.417 1.258 4.862l-1.332 4.869 4.997-1.31c1.401.767 3.003 1.202 4.707 1.202 5.514 0 10-4.486 10-10 0-5.514-4.486-10-10-10z"/>
-    </svg>
-  </a>
+  <!-- Mobile App Bottom Navigation Dock (Sticky on Mobile & Tablets) -->
+  <nav class="mobile-bottom-dock" id="mobileBottomDock" aria-label="Mobile Navigation Dock">
+    <a href="index.html#hero" class="dock-item active" id="dockHome" onclick="handleDockNav(event, 'hero')">
+      <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span class="dock-label">Home</span>
+    </a>
+    <a href="#courses" class="dock-item" id="dockCourses" onclick="handleDockNav(event, 'courses')">
+      <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      <span class="dock-label">Courses</span>
+    </a>
+    <a href="classroom.html" class="dock-item dock-classroom" id="dockClassroom">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+        <span class="dock-badge-dot"></span>
+      </div>
+      <span class="dock-label">Classroom</span>
+    </a>
+    <a href="teacher-portal.html" class="dock-item dock-teacher" id="dockTeacher">
+      <div class="dock-icon-wrap">
+        <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span class="dock-badge-pill">80%</span>
+      </div>
+      <span class="dock-label">Teach</span>
+    </a>
+    <button type="button" class="dock-item" id="dockMenu" onclick="toggleMobileMenu()" aria-label="Open Full Navigation Menu">
+      <svg class="dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <span class="dock-label">Menu</span>
+    </button>
+  </nav>
+
+  <!-- Spotlight Quick Search & Action Modal (Ctrl + K) -->
+  <div class="spotlight-overlay" id="spotlightOverlay" onclick="closeSpotlightOnBackdrop(event)">
+    <div class="spotlight-modal" role="dialog" aria-modal="true" aria-label="Quick Search">
+      <div class="spotlight-input-row">
+        <div class="spotlight-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <input type="text" id="spotlightInput" class="spotlight-input" placeholder="Search subjects, SAT, IELTS, classroom, earnings..." autocomplete="off" oninput="handleSpotlightSearch(this.value)" />
+        <button class="spotlight-close-btn" onclick="closeSpotlightSearch()" aria-label="Close search">&times;</button>
+      </div>
+
+      <div class="spotlight-pills-row">
+        <button type="button" class="spotlight-pill active" data-filter="all" onclick="filterSpotlightCategory('all')">All Results</button>
+        <button type="button" class="spotlight-pill" data-filter="stem" onclick="filterSpotlightCategory('stem')">Core STEM</button>
+        <button type="button" class="spotlight-pill" data-filter="exams" onclick="filterSpotlightCategory('exams')">Standardized Exams</button>
+        <button type="button" class="spotlight-pill" data-filter="teachers" onclick="filterSpotlightCategory('teachers')">For Teachers</button>
+        <button type="button" class="spotlight-pill" data-filter="portal" onclick="filterSpotlightCategory('portal')">Portals & Tools</button>
+      </div>
+
+      <div class="spotlight-results" id="spotlightResults">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+
+      <div class="spotlight-footer">
+        <span>Tip: Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate, <kbd>Enter</kbd> to select</span>
+        <span>Press <kbd>ESC</kbd> to dismiss</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast-container" class="toast-container"></div>

@@ -16,6 +16,9 @@ let activeCheckoutCourseId = 'fmath-02';
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initStickyHeader();
+  initNavPersona();
+  initMobileDrawerTabs();
+  initSpotlightSearch();
   initCategoryPills();
   initSearch();
   initCurrencyToggle();
@@ -580,3 +583,304 @@ function openLegalModal(type) {
 
   modal.classList.add('active');
 }
+
+/* ==========================================================================
+   Dual-Persona Navigation Logic (Students vs. Teachers)
+   ========================================================================== */
+function initNavPersona() {
+  const saved = localStorage.getItem('glgc_nav_persona') || 'students';
+  setNavPersona(saved, false);
+}
+
+function setNavPersona(role, notify = true) {
+  const isStudent = role === 'students';
+  localStorage.setItem('glgc_nav_persona', role);
+
+  const btnStudents = document.getElementById('roleBtnStudents');
+  const btnTeachers = document.getElementById('roleBtnTeachers');
+  const navStudents = document.getElementById('navRoleStudents');
+  const navTeachers = document.getElementById('navRoleTeachers');
+
+  if (btnStudents && btnTeachers) {
+    if (isStudent) {
+      btnStudents.classList.add('active');
+      btnStudents.setAttribute('aria-selected', 'true');
+      btnTeachers.classList.remove('active', 'teacher-active');
+      btnTeachers.setAttribute('aria-selected', 'false');
+    } else {
+      btnTeachers.classList.add('active', 'teacher-active');
+      btnTeachers.setAttribute('aria-selected', 'true');
+      btnStudents.classList.remove('active');
+      btnStudents.setAttribute('aria-selected', 'false');
+    }
+  }
+
+  if (navStudents && navTeachers) {
+    if (isStudent) {
+      navStudents.classList.add('active');
+      navTeachers.classList.remove('active');
+    } else {
+      navTeachers.classList.add('active');
+      navStudents.classList.remove('active');
+    }
+  }
+
+  // Also sync drawer tabs if open
+  setDrawerTab(isStudent ? 'students' : 'teachers');
+
+  if (notify && typeof showToast === 'function') {
+    showToast(`Switched navigation to ${isStudent ? 'Student Hub' : 'Teacher Hub (80% Payout)'}`, 'info');
+  }
+}
+
+function filterCatalogFromNav(cat) {
+  closeMobileMenu();
+  currentCategory = cat;
+  
+  // Sync category pills
+  document.querySelectorAll('.pill-btn').forEach(pill => {
+    const pillCat = pill.getAttribute('data-cat') || 'all';
+    if (pillCat.toLowerCase() === cat.toLowerCase()) {
+      pill.classList.add('active');
+    } else {
+      pill.classList.remove('active');
+    }
+  });
+
+  renderCourses();
+
+  const coursesElem = document.getElementById('courses');
+  if (coursesElem) {
+    coursesElem.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Mobile Drawer Categorized Tabs
+function initMobileDrawerTabs() {
+  setDrawerTab('students');
+}
+
+function setDrawerTab(tab) {
+  const tabs = ['students', 'teachers', 'academy'];
+  tabs.forEach(t => {
+    const btn = document.getElementById(`drawerTab${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    const pane = document.getElementById(`drawerPane${t.charAt(0).toUpperCase() + t.slice(1)}`);
+    if (btn) {
+      if (t === tab) {
+        btn.classList.add('active');
+        if (t === 'teachers') btn.classList.add('teacher-tab');
+      } else {
+        btn.classList.remove('active', 'teacher-tab');
+      }
+    }
+    if (pane) {
+      if (t === tab) {
+        pane.classList.add('active');
+      } else {
+        pane.classList.remove('active');
+      }
+    }
+  });
+}
+
+// Mobile Bottom Dock Action Handler
+function handleDockNav(event, target) {
+  const items = document.querySelectorAll('.mobile-bottom-dock .dock-item');
+  items.forEach(i => i.classList.remove('active'));
+  
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  }
+
+  if (target === 'hero') {
+    if (event) event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else if (target === 'courses') {
+    if (event) event.preventDefault();
+    const coursesSec = document.getElementById('courses');
+    if (coursesSec) {
+      coursesSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+/* ==========================================================================
+   Spotlight Quick Search Palette (Ctrl + K)
+   ========================================================================== */
+const SPOTLIGHT_DATABASE = [
+  // Core STEM
+  { id: 'math', title: 'Pure Mathematics', desc: 'Algebra, Polynomials, Functions & Coordinate Geometry', cat: 'stem', icon: '📐', action: () => filterCatalogFromNav('all') },
+  { id: 'fmath', title: 'Further Mathematics', desc: 'Calculus, Vectors, Matrices, Mechanics & ODEs', cat: 'stem', icon: '♾️', action: () => filterCatalogFromNav('further maths') },
+  { id: 'phy', title: 'University & AP Physics', desc: 'Mechanics, Optics, Waves & Electromagnetism', cat: 'stem', icon: '⚡', action: () => filterCatalogFromNav('physics') },
+  { id: 'chem', title: 'Chemistry (Organic & Physical)', desc: 'Reaction Mechanisms (SN1/SN2), Stoichiometry & Energetics', cat: 'stem', icon: '🧪', action: () => filterCatalogFromNav('chemistry') },
+  { id: 'bio', title: 'Biology & Genetics', desc: 'Cellular Biology, Molecular Genetics & Physiology', cat: 'stem', icon: '🧬', action: () => filterCatalogFromNav('biology') },
+  { id: 'eng', title: 'English Language & Rhetoric', desc: 'Essay Composition, Syntax, Grammatical Concord', cat: 'stem', icon: '✍️', action: () => filterCatalogFromNav('english') },
+  
+  // Standardized Exams
+  { id: 'sat', title: 'Digital SAT Masterclass', desc: 'Target 1550+: Adaptive Module Tactics & Desmos Speed', cat: 'exams', icon: '🎯', action: () => filterCatalogFromNav('sat') },
+  { id: 'ielts', title: 'IELTS Band 8.5 Strategy', desc: 'Academic & General Training: Task 1/2 & Speaking Drills', cat: 'exams', icon: '🗣️', action: () => filterCatalogFromNav('ielts') },
+  { id: 'toefl', title: 'TOEFL iBT Score Booster', desc: 'Integrated Speaking & Academic Discussion Writing', cat: 'exams', icon: '🌐', action: () => filterCatalogFromNav('toefl') },
+  { id: 'gre', title: 'GRE General (Target 330+)', desc: 'Quant Elimination Shortcuts & High-Frequency Vocabulary', cat: 'exams', icon: '📊', action: () => filterCatalogFromNav('gre') },
+  { id: 'gmat', title: 'GMAT Focus Edition', desc: 'Data Insights, Multi-Source Reasoning & Problem Solving', cat: 'exams', icon: '📈', action: () => filterCatalogFromNav('gmat') },
+  
+  // Teacher Hub
+  { id: 'tcalc', title: 'Teacher 80% Revenue Calculator', desc: 'Estimate weekly payouts based on enrolled students and course fee', cat: 'teachers', icon: '💰', action: () => { window.location.href = 'teacher-portal.html#calculator'; } },
+  { id: 'twiz', title: 'Teacher Application Wizard', desc: '4-step educator onboarding & subject credential verification', cat: 'teachers', icon: '📝', action: () => { window.location.href = 'teacher-portal.html#wizard'; } },
+  { id: 'tstudio', title: 'Course Studio & Syllabus Builder', desc: 'Publish video lectures, synchronized notes & checkpoint quizzes', cat: 'teachers', icon: '🛠️', action: () => { window.location.href = 'teacher-portal.html#wizard'; } },
+  { id: 'tben', title: 'Instructor Benefits & Terms', desc: 'Weekly direct bank transfers, global distribution & zero hosting fees', cat: 'teachers', icon: '🏆', action: () => { window.location.href = 'teacher-portal.html#benefits'; } },
+  
+  // Portals & Tools
+  { id: 'class', title: 'Virtual Classroom Portal', desc: 'Interactive video player, audio visualizer, notes & quiz engine', cat: 'portal', icon: '💻', action: () => { window.location.href = 'classroom.html'; } },
+  { id: 'abroad', title: 'Study Abroad Admissions Counseling', desc: 'Undergraduate & graduate placement in USA, UK, Canada & Europe', cat: 'portal', icon: '🌍', action: () => { closeSpotlightSearch(); const el = document.getElementById('study-abroad'); if(el) el.scrollIntoView({ behavior: 'smooth' }); } },
+  { id: 'mentor', title: 'Book 1-on-1 Live Mentorship', desc: 'Personalized diagnostic consultation with Director Engr. Ajibade', cat: 'portal', icon: '📅', action: () => { closeSpotlightSearch(); const el = document.getElementById('mentorship'); if(el) el.scrollIntoView({ behavior: 'smooth' }); } },
+  { id: 'plans', title: 'Tuition Subscriptions & Passes', desc: 'All-access monthly & annual passes with multi-currency checkout', cat: 'portal', icon: '💳', action: () => { closeSpotlightSearch(); const el = document.getElementById('pricing'); if(el) el.scrollIntoView({ behavior: 'smooth' }); } },
+  { id: 'founder', title: 'About Director Engr. Ajibade Opeyemi', desc: 'Civil Engineer, Senior STEM Educator & Lead Academy Coordinator', cat: 'portal', icon: '👨‍💼', action: () => { closeSpotlightSearch(); const el = document.getElementById('founder'); if(el) el.scrollIntoView({ behavior: 'smooth' }); } }
+];
+
+let spotlightActiveCategory = 'all';
+let spotlightHighlightedIndex = 0;
+let currentSpotlightItems = [];
+
+function initSpotlightSearch() {
+  window.addEventListener('keydown', (e) => {
+    // Open on Ctrl+K, Cmd+K, or pressing "/" when not inside an input
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      openSpotlightSearch();
+    } else if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      openSpotlightSearch();
+    } else if (e.key === 'Escape') {
+      closeSpotlightSearch();
+    }
+  });
+
+  const spotlightInput = document.getElementById('spotlightInput');
+  if (spotlightInput) {
+    spotlightInput.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateSpotlight(1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateSpotlight(-1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        executeHighlightedSpotlight();
+      }
+    });
+  }
+}
+
+function openSpotlightSearch() {
+  const overlay = document.getElementById('spotlightOverlay');
+  const input = document.getElementById('spotlightInput');
+  if (!overlay) return;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (input) {
+    input.value = '';
+    setTimeout(() => input.focus(), 50);
+  }
+  handleSpotlightSearch('');
+}
+
+function closeSpotlightSearch() {
+  const overlay = document.getElementById('spotlightOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeSpotlightOnBackdrop(e) {
+  if (e.target && e.target.id === 'spotlightOverlay') {
+    closeSpotlightSearch();
+  }
+}
+
+function filterSpotlightCategory(cat) {
+  spotlightActiveCategory = cat;
+  document.querySelectorAll('.spotlight-pill').forEach(pill => {
+    if (pill.getAttribute('data-filter') === cat) {
+      pill.classList.add('active');
+    } else {
+      pill.classList.remove('active');
+    }
+  });
+  const input = document.getElementById('spotlightInput');
+  handleSpotlightSearch(input ? input.value : '');
+}
+
+function handleSpotlightSearch(query) {
+  const resultsContainer = document.getElementById('spotlightResults');
+  if (!resultsContainer) return;
+
+  const q = query.toLowerCase().trim();
+  currentSpotlightItems = SPOTLIGHT_DATABASE.filter(item => {
+    const matchesCat = (spotlightActiveCategory === 'all') || (item.cat === spotlightActiveCategory);
+    const matchesText = !q || item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
+    return matchesCat && matchesText;
+  });
+
+  spotlightHighlightedIndex = 0;
+
+  if (currentSpotlightItems.length === 0) {
+    resultsContainer.innerHTML = `
+      <div style="text-align: center; padding: 36px 20px; color: var(--text-dim);">
+        <p style="font-size: 1.1rem; margin-bottom: 6px;">No matching courses or tools found</p>
+        <small style="color: var(--text-muted);">Try searching for "SAT", "Maths", "Teacher", "Classroom" or "Mentorship"</small>
+      </div>
+    `;
+    return;
+  }
+
+  resultsContainer.innerHTML = currentSpotlightItems.map((item, idx) => {
+    const tagClass = item.cat === 'stem' ? 'stem' : item.cat === 'exams' ? 'exam' : item.cat === 'teachers' ? 'teacher' : 'portal';
+    const tagLabel = item.cat === 'stem' ? 'STEM Rigor' : item.cat === 'exams' ? 'Exam Prep' : item.cat === 'teachers' ? 'Teacher Hub' : 'Academy Tool';
+    const isHighlighted = idx === spotlightHighlightedIndex ? 'highlighted' : '';
+    return `
+      <div class="spotlight-result-item ${isHighlighted}" onclick="executeSpotlightIndex(${idx})">
+        <div class="spotlight-res-icon">${item.icon}</div>
+        <div class="spotlight-res-body">
+          <div class="spotlight-res-title">
+            <span>${item.title}</span>
+            <span class="spotlight-res-tag ${tagClass}">${tagLabel}</span>
+          </div>
+          <div class="spotlight-res-desc">${item.desc}</div>
+        </div>
+        <span style="color: var(--text-dim); font-size: 0.8rem;">&rarr;</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function navigateSpotlight(delta) {
+  if (currentSpotlightItems.length === 0) return;
+  spotlightHighlightedIndex = (spotlightHighlightedIndex + delta + currentSpotlightItems.length) % currentSpotlightItems.length;
+  
+  const items = document.querySelectorAll('.spotlight-result-item');
+  items.forEach((item, idx) => {
+    if (idx === spotlightHighlightedIndex) {
+      item.classList.add('highlighted');
+      item.scrollIntoView({ block: 'nearest' });
+    } else {
+      item.classList.remove('highlighted');
+    }
+  });
+}
+
+function executeHighlightedSpotlight() {
+  if (currentSpotlightItems[spotlightHighlightedIndex]) {
+    executeSpotlightIndex(spotlightHighlightedIndex);
+  }
+}
+
+function executeSpotlightIndex(index) {
+  const item = currentSpotlightItems[index];
+  if (item && typeof item.action === 'function') {
+    closeSpotlightSearch();
+    item.action();
+  }
+}
+
