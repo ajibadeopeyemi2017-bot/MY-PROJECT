@@ -2174,7 +2174,8 @@ button, input, select, textarea {
   transition: all 0.3s ease;
 }
 
-.mobile-drawer-overlay.active {
+.mobile-drawer-overlay.active,
+.mobile-drawer-overlay.open {
   opacity: 1;
   visibility: visible;
 }
@@ -2184,8 +2185,9 @@ button, input, select, textarea {
   top: 0;
   right: -100%;
   width: 86%;
-  max-width: 380px;
+  max-width: 360px;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-surface);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
@@ -2193,10 +2195,11 @@ button, input, select, textarea {
   z-index: 1600;
   display: flex;
   flex-direction: column;
-  padding: 28px 24px;
+  padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
   transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: -15px 0 45px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav-drawer.open {
@@ -2757,58 +2760,228 @@ button, input, select, textarea {
   .modal-window {
     max-width: 95vw;
     width: 100%;
-    padding: 26px 18px;
+    padding: 24px 18px;
     border-radius: var(--radius-lg);
     max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile Input Hygiene - Prevents iOS Safari Auto-Zoom */
+  input,
+  select,
+  textarea,
+  .search-input {
+    font-size: 16px !important;
+  }
+
+  /* Safe Area / Mobile Bottom Offset */
+  .floating-whatsapp-btn {
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    right: calc(18px + env(safe-area-inset-right));
+    width: 52px;
+    height: 52px;
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 16px;
+/* ==========================================================================
+   Mobile Optimization: Smartphones & Phablets (<= 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+  /* Compact Sleek Navigation Bar */
+  .nav-wrap {
+    height: 64px;
+    padding: 0 4px;
   }
 
-  .nav-wrap {
-    height: 68px;
+  .brand-logo {
+    gap: 8px;
   }
 
   .brand-icon {
     width: 36px;
     height: 36px;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
   }
 
   .brand-title {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 3.8vw, 1.05rem);
+    letter-spacing: -0.01em;
   }
 
   .brand-subtitle {
-    font-size: 0.65rem;
+    display: none;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  /* Icon-Only Sleek Theme Toggle on Mobile */
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-toggle-btn span:not(.theme-toggle-icon) {
+    display: none;
+  }
+
+  .theme-toggle-icon {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  /* Compact Currency Switcher */
+  .currency-toggle {
+    padding: 2px;
+  }
+
+  .curr-btn {
+    padding: 5px 8px;
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  /* Catalog Course Cards - Ergonomic Tap Targets */
+  .course-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .course-actions > :nth-child(1),
+  .course-actions > :nth-child(2) {
+    grid-column: span 1 !important;
+    min-height: 42px;
+    padding: 10px 4px !important;
+    font-size: 0.82rem !important;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .course-actions > :nth-child(3) {
+    grid-column: span 2 !important;
+    min-height: 46px;
+    padding: 12px 18px !important;
+    font-size: 0.94rem !important;
+    font-weight: 800;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Study Abroad CTA Stack */
+  .study-abroad-card div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .study-abroad-card .btn,
+  .founder-content .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Certificate Verification Bar */
+  .cert-verify-box {
+    padding: 20px 14px;
+  }
+
+  .cert-input-wrap {
+    width: 100%;
+  }
+
+  .cert-input-wrap .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Toast Notification Bar Pinned to Top on Mobile */
+  .toast-container {
+    bottom: auto;
+    top: 16px;
+    left: 14px;
+    right: 14px;
+    max-width: calc(100% - 28px);
+  }
+}
+
+/* ==========================================================================
+   Mobile Optimization: Standard & Compact Devices (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero-section {
+    padding: 30px 0 60px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 7.4vw, 2.35rem);
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .eyebrow-kicker {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    line-height: 1.4;
   }
 
   .btn {
     padding: 12px 18px;
     font-size: 0.88rem;
+    min-height: 46px;
   }
 
   .btn-lg {
     padding: 14px 20px;
     font-size: 0.94rem;
+    min-height: 48px;
   }
 
-  .course-actions {
-    grid-template-columns: 1fr 1fr;
+  /* Booking Calendar Days Touch Friendly */
+  .calendar-selector-wrap {
+    padding: 12px 8px;
+  }
+
+  .cal-days-grid {
+    gap: 3px;
+  }
+
+  .cal-day {
+    padding: 8px 1px;
+    font-size: 0.78rem;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cal-day-name {
+    font-size: 0.68rem;
+    padding-bottom: 2px;
+  }
+
+  .booking-slots-list {
+    grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .course-actions a.btn,
-  .course-actions button:first-of-type {
-    grid-column: span 1;
-  }
-
-  .course-actions button:last-of-type {
-    grid-column: span 2;
+  .slot-btn {
+    min-height: 44px;
   }
 
   .abroad-flyer-grid {
@@ -2817,14 +2990,74 @@ button, input, select, textarea {
   }
 
   .flyer-thumb {
-    height: 200px;
+    height: 190px;
+    width: 100%;
   }
 
-  .floating-whatsapp-btn {
-    bottom: 20px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
+  /* Testimonials Grid */
+  .testimonial-card {
+    padding: 20px 14px;
+  }
+
+  /* Pricing Cards Full Stacks */
+  .pricing-card {
+    padding: 28px 16px;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .pricing-amount {
+    font-size: 2.6rem;
+  }
+}
+
+/* ==========================================================================
+   Mobile Optimization: Ultra Compact Phones (<= 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .brand-title {
+    font-size: 0.88rem;
+  }
+
+  .curr-btn {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+  }
+
+  .hero-trust-bar {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .trust-item {
+    padding: 8px;
+  }
+
+  .trust-number {
+    font-size: 1.25rem;
+  }
+
+  .modal-window {
+    padding: 18px 12px;
   }
 }
 

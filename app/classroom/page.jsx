@@ -285,7 +285,7 @@ export default function ClassroomPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', borderLeft: '1px solid var(--border-glass)', paddingLeft: '14px' }}>
             <div className="author-avatar" style={{ width: '34px', height: '34px', fontSize: '0.85rem' }}>ST</div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <strong style={{ fontSize: '0.82rem', color: '#fff' }}>{studentName}</strong>
+              <strong style={{ fontSize: '0.82rem', color: 'var(--text-main)' }}>{studentName}</strong>
               <small style={{ fontSize: '0.7rem', color: 'var(--accent-emerald)' }}>All-Access Active</small>
             </div>
           </div>

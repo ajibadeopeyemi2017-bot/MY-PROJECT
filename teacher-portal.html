@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Teacher Registration & Course Creation Hub | Greater Light Academy</title>
   <meta name="description" content="Register as an educator with Greater Light Academy. Upload your STEM and standardized exam courses, teach students worldwide, and earn an 80% revenue share.">
   
@@ -41,8 +41,8 @@
           <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
           <span id="themeToggleText">Bright</span>
         </button>
-        <a href="index.html" class="btn btn-outline btn-sm">Return to Academy</a>
-        <a href="#wizard" class="btn btn-primary btn-sm">Join Faculty</a>
+        <a href="index.html" class="btn btn-outline btn-sm" id="navReturnBtn">Return to Academy</a>
+        <a href="#wizard" class="btn btn-primary btn-sm" id="navJoinBtn">Join Faculty</a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
           &#9776;
         </button>
@@ -89,13 +89,13 @@
         <div class="badge badge-purple" style="background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.35); margin-bottom: 16px;">
           <span>Educator Partnership Program</span>
         </div>
-        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px;">
+        <h1 style="font-size: clamp(2rem, 6.8vw, 3.2rem); font-weight: 800; line-height: 1.18; margin-bottom: 20px; color: var(--text-main);">
           Teach with Greater Light. <span class="gradient-text">Inspire Scholars.</span> Earn an <span style="color: #34d399;">80% Revenue Share</span>.
         </h1>
         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.65; margin-bottom: 30px;">
           We are partnering with exceptional educators in <strong>Mathematics, Further Maths, Physics, Chemistry, Biology, English</strong>, and premier test prep coaches for <strong>SAT, IELTS, TOEFL, GRE & GMAT</strong>. Upload your classes, reach thousands of motivated students, and build recurring income.
         </p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
           <a href="#wizard" class="btn btn-primary btn-lg">Start Teacher Application</a>
           <a href="#calculator" class="btn btn-outline btn-lg">Calculate Potential Revenue</a>
         </div>

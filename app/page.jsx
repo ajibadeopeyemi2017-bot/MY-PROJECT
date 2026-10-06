@@ -492,7 +492,7 @@ export default function HomePage() {
                   <span className="kicker-dot" style={{ background: 'var(--accent-gold)', boxShadow: '0 0 10px var(--accent-gold)' }}></span>
                   <span>Greater Light Global Consult (GLGC)</span>
                 </div>
-                <h2 style={{ fontSize: '2.3rem', margin: '12px 0', color: '#fff' }}>
+                <h2 style={{ fontSize: '2.3rem', margin: '12px 0', color: 'var(--text-main)' }}>
                   Dream to Study Abroad? We Make It Reality.
                 </h2>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: '1.75', marginBottom: '22px' }}>

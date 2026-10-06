@@ -129,7 +129,7 @@ export default function TeacherPortalPage() {
                 <span className="kicker-dot" style={{ background: 'var(--accent-purple)', boxShadow: '0 0 10px var(--accent-purple)' }}></span>
                 <span>Educator Partnership Hub</span>
               </div>
-              <h1 style={{ fontSize: '2.8rem', color: '#fff', margin: '14px 0 18px', lineHeight: 1.15 }}>
+              <h1 style={{ fontSize: 'clamp(2rem, 6.8vw, 2.8rem)', color: 'var(--text-main)', margin: '14px 0 18px', lineHeight: 1.18 }}>
                 Teach With Greater Light. <br />
                 Earn an <span className="gradient-gold">80% Revenue Share</span>.
               </h1>
