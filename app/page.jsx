@@ -322,8 +322,8 @@ export default function HomePage() {
 
             <div className="bento-grid">
               {/* Card 1: Virtual Classroom */}
-              <div className="bento-card bento-span-2 glass-panel" style={{ background: 'linear-gradient(135deg, rgba(16, 26, 54, 0.8) 0%, rgba(9, 14, 30, 0.95) 100%)', borderColor: 'rgba(99, 102, 241, 0.35)' }}>
-                <div className="bento-icon-badge" style={{ background: 'rgba(99, 102, 241, 0.2)', color: '#a5b4fc' }}>💻</div>
+              <div className="bento-card bento-span-2 glass-panel">
+                <div className="bento-icon-badge" style={{ background: 'rgba(99, 102, 241, 0.15)', color: 'var(--primary)' }}>💻</div>
                 <h3 className="bento-title">Next-Gen Virtual Classroom & Video Player</h3>
                 <p className="bento-desc">
                   Students don't just watch videos—they interact with synchronized chapter notes, download engineering formula sheets, ask instant questions, and take timed diagnostic checkpoint quizzes with real-time feedback.
@@ -333,31 +333,31 @@ export default function HomePage() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span className="live-dot"></span>
-                      <strong style={{ color: '#fff', fontSize: '0.92rem' }}>Active Module: Further Maths Calculus</strong>
+                      <strong style={{ color: 'var(--text-main)', fontSize: '0.92rem' }}>Active Module: Further Maths Calculus</strong>
                     </div>
                     <span className="badge badge-emerald mono-accent">Progress: 68%</span>
                   </div>
-                  <div style={{ background: 'rgba(255,255,255,0.06)', height: '8px', borderRadius: '4px', overflow: 'hidden', marginBottom: '16px' }}>
+                  <div style={{ background: 'rgba(125,125,125,0.12)', height: '8px', borderRadius: '4px', overflow: 'hidden', marginBottom: '16px' }}>
                     <div style={{ background: 'var(--secondary-gradient)', height: '100%', width: '68%' }}></div>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <small style={{ color: 'var(--text-dim)' }} className="mono-accent">Lesson 4 of 6 • Integration by Parts</small>
+                    <small style={{ color: 'var(--text-muted)' }} className="mono-accent">Lesson 4 of 6 • Integration by Parts</small>
                     <Link href="/classroom" className="btn btn-cyan btn-sm">Enter Virtual Classroom →</Link>
                   </div>
                 </div>
               </div>
 
               {/* Card 2: 80% Teacher Revenue */}
-              <div className="bento-card bento-span-1 glass-panel" style={{ background: 'linear-gradient(135deg, rgba(30, 18, 54, 0.8) 0%, rgba(14, 10, 30, 0.95) 100%)', borderColor: 'rgba(139, 92, 246, 0.35)' }}>
-                <div className="bento-icon-badge" style={{ background: 'rgba(139, 92, 246, 0.2)', color: 'var(--accent-purple)' }}>📈</div>
+              <div className="bento-card bento-span-1 glass-panel">
+                <div className="bento-icon-badge" style={{ background: 'rgba(139, 92, 246, 0.15)', color: 'var(--accent-purple)' }}>📈</div>
                 <h3 className="bento-title">80% Teacher Revenue Share</h3>
                 <p className="bento-desc">
                   We partner with passionate educators. Upload your courses, reach 45,000+ students, and receive automated weekly payouts directly to your bank account.
                 </p>
                 <div className="bento-preview-widget" style={{ textAlign: 'center' }}>
-                  <small style={{ color: 'var(--text-dim)', textTransform: 'uppercase' }} className="mono-accent">150 Students @ $49/mo</small>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 900, color: '#34d399', margin: '4px 0' }} className="mono-accent">
-                    $5,880 <span style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>/ mo</span>
+                  <small style={{ color: 'var(--text-muted)', textTransform: 'uppercase' }} className="mono-accent">150 Students @ $49/mo</small>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.2rem', fontWeight: 900, color: '#059669', margin: '4px 0' }} className="mono-accent">
+                    $5,880 <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>/ mo</span>
                   </div>
                   <Link href="/teacher-portal" className="btn btn-primary btn-sm" style={{ width: '100%', marginTop: '10px' }}>
                     Register as a Teacher
@@ -366,8 +366,8 @@ export default function HomePage() {
               </div>
 
               {/* Card 3: Study Abroad Admissions */}
-              <div className="bento-card bento-span-1 glass-panel" style={{ background: 'linear-gradient(135deg, rgba(28, 22, 10, 0.8) 0%, rgba(14, 12, 6, 0.95) 100%)', borderColor: 'rgba(245, 158, 11, 0.35)' }}>
-                <div className="bento-icon-badge" style={{ background: 'rgba(245, 158, 11, 0.2)', color: 'var(--accent-gold)' }}>🌍</div>
+              <div className="bento-card bento-span-1 glass-panel">
+                <div className="bento-icon-badge" style={{ background: 'rgba(245, 158, 11, 0.15)', color: 'var(--accent-gold)' }}>🌍</div>
                 <h3 className="bento-title">Study Abroad Admissions</h3>
                 <p className="bento-desc">
                   Full-cycle admissions guidance for universities in the USA, UK, Canada, and Europe. Fully & partially funded scholarships with study gap support.
@@ -386,8 +386,8 @@ export default function HomePage() {
               </div>
 
               {/* Card 4: Certificate Verification */}
-              <div className="bento-card bento-span-2 glass-panel" style={{ background: 'linear-gradient(135deg, rgba(10, 24, 40, 0.8) 0%, rgba(6, 14, 26, 0.95) 100%)', borderColor: 'rgba(6, 182, 212, 0.35)' }}>
-                <div className="bento-icon-badge" style={{ background: 'rgba(6, 182, 212, 0.2)', color: 'var(--accent-cyan)' }}>📜</div>
+              <div className="bento-card bento-span-2 glass-panel">
+                <div className="bento-icon-badge" style={{ background: 'rgba(6, 182, 212, 0.15)', color: 'var(--accent-cyan)' }}>📜</div>
                 <h3 className="bento-title">Instant Digital Credential Verification</h3>
                 <p className="bento-desc">
                   Universities, scholarship boards, and employers can verify student academic credentials and exam scores instantly using our decentralized verification engine.
@@ -506,11 +506,11 @@ export default function HomePage() {
                   <span className="flag-pill">🇪🇺 Europe & Others</span>
                 </div>
 
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '30px', color: '#cbd5e1', fontSize: '0.95rem' }}>
-                  <li>✓ <strong>Fully & Partially Funded Scholarships:</strong> Undergraduate and Master's degree awards.</li>
-                  <li>✓ <strong>Study Gap Accepted:</strong> Tailored SOP and profile positioning to turn your dreams into reality.</li>
-                  <li>✓ <strong>Flexible Payment Plans & Low Tuition:</strong> Direct partnerships with global institutions.</li>
-                  <li>✓ <strong>Exam Coaching Included:</strong> High-scoring SAT & IELTS preparation right on this platform.</li>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '30px', color: 'var(--text-muted)', fontSize: '0.95rem' }}>
+                  <li>✓ <strong style={{ color: 'var(--text-main)' }}>Fully & Partially Funded Scholarships:</strong> Undergraduate and Master's degree awards.</li>
+                  <li>✓ <strong style={{ color: 'var(--text-main)' }}>Study Gap Accepted:</strong> Tailored SOP and profile positioning to turn your dreams into reality.</li>
+                  <li>✓ <strong style={{ color: 'var(--text-main)' }}>Flexible Payment Plans & Low Tuition:</strong> Direct partnerships with global institutions.</li>
+                  <li>✓ <strong style={{ color: 'var(--text-main)' }}>Exam Coaching Included:</strong> High-scoring SAT & IELTS preparation right on this platform.</li>
                 </ul>
 
                 <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -651,7 +651,7 @@ export default function HomePage() {
                   <span className="kicker-dot"></span>
                   <span>Live Diagnostic Sessions</span>
                 </div>
-                <h2 style={{ fontSize: '2.2rem', margin: '12px 0', color: '#fff' }}>Book a 1-on-1 Strategy Session</h2>
+                <h2 style={{ fontSize: '2.2rem', margin: '12px 0', color: 'var(--text-main)' }}>Book a 1-on-1 Strategy Session</h2>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '24px' }}>
                   Schedule a dedicated 45-minute strategy call with Engr. Ajibade or a senior GLGC tutor to pinpoint your weak areas, review difficult problem sets, or formulate an exam score plan.
                 </p>
@@ -659,7 +659,7 @@ export default function HomePage() {
                 <form onSubmit={handleMentorshipSubmit}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '22px' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: 600 }}>Your Full Name</label>
+                      <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>Your Full Name</label>
                       <input
                         type="text"
                         className="search-input"
@@ -671,10 +671,10 @@ export default function HomePage() {
                       />
                     </div>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: 600 }}>Target Exam / Subject</label>
+                      <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>Target Exam / Subject</label>
                       <select
                         className="search-input"
-                        style={{ borderRadius: 'var(--radius-md)', background: '#0c1222' }}
+                        style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-surface)', color: 'var(--text-main)' }}
                         value={mentorExam}
                         onChange={(e) => setMentorExam(e.target.value)}
                       >
@@ -687,7 +687,7 @@ export default function HomePage() {
                       </select>
                     </div>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: 600 }}>Available Time Slots (WAT / GMT+1)</label>
+                      <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: 600 }}>Available Time Slots (WAT / GMT+1)</label>
                       <div className="booking-slots-list">
                         {['10:00 AM - 10:45 AM', '01:00 PM - 01:45 PM', '04:30 PM - 05:15 PM', '07:00 PM - 07:45 PM'].map((slot) => (
                           <button
@@ -712,7 +712,7 @@ export default function HomePage() {
               {/* Interactive Calendar Widget */}
               <div className="calendar-selector-wrap">
                 <div className="cal-header">
-                  <h4 style={{ fontSize: '1.15rem', color: '#ffffff' }}>October 2026 Session Slots</h4>
+                  <h4 style={{ fontSize: '1.15rem', color: 'var(--text-main)' }}>October 2026 Session Slots</h4>
                   <span style={{ fontSize: '0.85rem', color: 'var(--accent-cyan)' }} className="mono-accent">Engr. Ajibade's Calendar</span>
                 </div>
 
@@ -735,9 +735,9 @@ export default function HomePage() {
                   ))}
                 </div>
 
-                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border-glass)', borderRadius: 'var(--radius-md)', padding: '18px', marginTop: '14px' }}>
+                <div style={{ background: 'rgba(125,125,125,0.06)', border: '1px solid var(--border-glass)', borderRadius: 'var(--radius-md)', padding: '18px', marginTop: '14px' }}>
                   <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-                    <strong style={{ color: '#fff' }}>Selected Date:</strong> Tuesday, October {selectedDay}, 2026
+                    <strong style={{ color: 'var(--text-main)' }}>Selected Date:</strong> Tuesday, October {selectedDay}, 2026
                   </p>
                   <p style={{ fontSize: '0.82rem', color: 'var(--accent-emerald)', marginTop: '4px' }} className="mono-accent">
                     ● 4 Openings with Engr. Ajibade
@@ -825,7 +825,7 @@ export default function HomePage() {
             {/* Cert verification box */}
             <div className="cert-verify-box glass-panel">
               <div>
-                <h4 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '6px' }}>Instant Certificate Verification Portal</h4>
+                <h4 style={{ fontSize: '1.3rem', color: 'var(--text-main)', marginBottom: '6px' }}>Instant Certificate Verification Portal</h4>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>Employers, universities, and sponsors can verify authentic GLGC credentials in real time.</p>
               </div>
               <div className="cert-input-wrap">

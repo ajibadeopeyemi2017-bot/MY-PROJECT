@@ -13,7 +13,7 @@ export default function SyllabusModal({ isOpen, course, onClose, onEnroll }) {
           <span className="kicker-dot" style={{ background: 'var(--accent-cyan)' }}></span>
           <span>{course.subject} • {course.level || 'Mastery Track'}</span>
         </div>
-        <h3 style={{ fontSize: '1.45rem', color: '#fff', margin: '8px 0 16px' }}>{course.title}</h3>
+        <h3 style={{ fontSize: '1.45rem', color: 'var(--text-main)', margin: '8px 0 16px' }}>{course.title}</h3>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '20px' }}>
           {course.description}
         </p>
@@ -23,7 +23,7 @@ export default function SyllabusModal({ isOpen, course, onClose, onEnroll }) {
             <div
               key={modIdx}
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'rgba(125, 125, 125, 0.05)',
                 border: '1px solid var(--border-glass)',
                 borderRadius: 'var(--radius-md)',
                 padding: '16px',
@@ -31,7 +31,7 @@ export default function SyllabusModal({ isOpen, course, onClose, onEnroll }) {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <strong style={{ color: '#e2e8f0', fontSize: '0.95rem' }}>{mod.module}</strong>
+                <strong style={{ color: 'var(--text-main)', fontSize: '0.95rem' }}>{mod.module}</strong>
                 <span className="mono-accent" style={{ fontSize: '0.78rem', color: 'var(--accent-cyan)' }}>
                   {mod.duration || '4 Hours'}
                 </span>

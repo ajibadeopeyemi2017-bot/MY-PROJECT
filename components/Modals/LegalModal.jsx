@@ -62,7 +62,7 @@ export default function LegalModal({ isOpen, type = 'privacy', onClose }) {
     <div className="modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="modal-window">
         <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">&times;</button>
-        <h3 style={{ fontSize: '1.45rem', color: '#fff', marginBottom: '16px' }}>{current.title}</h3>
+        <h3 style={{ fontSize: '1.45rem', color: 'var(--text-main)', marginBottom: '16px' }}>{current.title}</h3>
         <div style={{ lineHeight: '1.7', fontSize: '0.92rem' }}>
           {current.content}
         </div>

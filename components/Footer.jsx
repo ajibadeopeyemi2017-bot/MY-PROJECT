@@ -58,8 +58,8 @@ export default function Footer({ onOpenLegal }) {
             <div className="footer-contact-item">
               <span>📞</span>
               <span className="mono-accent">
-                <a href="tel:08050367351" style={{ color: 'inherit', textDecoration: 'underline' }}>08050367351</a> / {' '}
                 <a href="tel:08163776464" style={{ color: 'inherit', textDecoration: 'underline' }}>08163776464</a> / {' '}
+                <a href="tel:08050367351" style={{ color: 'inherit', textDecoration: 'underline' }}>08050367351</a> / {' '}
                 <a href="tel:09165332314" style={{ color: 'inherit', textDecoration: 'underline' }}>09165332314</a>
               </span>
             </div>

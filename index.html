@@ -43,6 +43,11 @@
 
       <!-- Nav Actions & Currency Switcher -->
       <div class="nav-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Bright / Dark Mode" title="Toggle Bright / Dark Mode">
+          <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
+          <span id="themeToggleText">Bright</span>
+        </button>
+
         <div class="currency-toggle" title="Switch Currency">
           <button id="curr-usd" class="curr-btn active">USD ($)</button>
           <button id="curr-ngn" class="curr-btn">NGN (₦)</button>
@@ -83,6 +88,10 @@
     </ul>
 
     <div class="mobile-drawer-actions">
+      <button class="theme-toggle-btn" onclick="toggleTheme()" style="width: 100%; justify-content: center; padding: 10px;" aria-label="Toggle Bright / Dark Mode">
+        <span class="theme-toggle-icon" id="mobileThemeToggleIcon">☀️</span>
+        <span id="mobileThemeToggleText">Bright Theme</span>
+      </button>
       <a href="classroom.html" class="btn btn-outline" style="width: 100%;">Student Classroom</a>
       <a href="teacher-portal.html" class="btn btn-primary" style="width: 100%;">Teach With Us</a>
     </div>
@@ -235,8 +244,8 @@
 
       <div class="bento-grid">
         <!-- Bento Card 1: Interactive Virtual Classroom (Span 2) -->
-        <div class="bento-card bento-span-2 glass-panel" style="background: linear-gradient(135deg, rgba(16, 26, 54, 0.8) 0%, rgba(9, 14, 30, 0.95) 100%); border-color: rgba(99, 102, 241, 0.35);">
-          <div class="bento-icon-badge" style="background: rgba(99, 102, 241, 0.2); color: #a5b4fc;">💻</div>
+        <div class="bento-card bento-span-2 glass-panel" style="border-color: rgba(67, 56, 202, 0.25);">
+          <div class="bento-icon-badge" style="background: rgba(67, 56, 202, 0.12); color: var(--primary);">💻</div>
           <h3 class="bento-title">Next-Gen Virtual Classroom & Video Player</h3>
           <p class="bento-desc">
             Students don't just watch videos—they interact with synchronized chapter notes, download engineering formula sheets, ask instant questions, and take timed diagnostic checkpoint quizzes with real-time feedback.
@@ -246,11 +255,11 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span class="live-dot"></span>
-                <strong style="color: #fff; font-size: 0.92rem;">Active Module: Further Maths Calculus</strong>
+                <strong style="color: var(--text-main); font-size: 0.92rem;">Active Module: Further Maths Calculus</strong>
               </div>
               <span class="badge badge-emerald mono-accent">Progress: 68%</span>
             </div>
-            <div style="background: rgba(255,255,255,0.06); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 16px;">
+            <div style="background: var(--border-glass); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 16px;">
               <div style="background: var(--secondary-gradient); height: 100%; width: 68%;"></div>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -261,15 +270,15 @@
         </div>
 
         <!-- Bento Card 2: Teacher Revenue Hub (Span 1) -->
-        <div class="bento-card bento-span-1 glass-panel" style="background: linear-gradient(135deg, rgba(30, 18, 54, 0.8) 0%, rgba(14, 10, 30, 0.95) 100%); border-color: rgba(139, 92, 246, 0.35);">
-          <div class="bento-icon-badge" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">📈</div>
+        <div class="bento-card bento-span-1 glass-panel" style="border-color: rgba(124, 58, 237, 0.25);">
+          <div class="bento-icon-badge" style="background: rgba(124, 58, 237, 0.12); color: var(--accent-purple);">📈</div>
           <h3 class="bento-title">80% Teacher Revenue Share</h3>
           <p class="bento-desc">
             We partner with passionate educators. Upload your courses, reach 45,000+ students, and receive automated weekly payouts directly to your bank account.
           </p>
           <div class="bento-preview-widget" style="text-align: center;">
             <small style="color: var(--text-dim); text-transform: uppercase;" class="mono-accent">150 Students @ $49/mo</small>
-            <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; color: #34d399; margin: 4px 0;" class="mono-accent">
+            <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; color: #059669; margin: 4px 0;" class="mono-accent">
               $5,880 <span style="font-size: 0.9rem; color: var(--text-dim);">/ mo</span>
             </div>
             <a href="teacher-portal.html" class="btn btn-primary btn-sm" style="width: 100%; margin-top: 10px;">Register as a Teacher</a>
@@ -277,8 +286,8 @@
         </div>
 
         <!-- Bento Card 3: Study Abroad Admissions (Span 1) -->
-        <div class="bento-card bento-span-1 glass-panel" style="background: linear-gradient(135deg, rgba(28, 22, 10, 0.8) 0%, rgba(14, 12, 6, 0.95) 100%); border-color: rgba(245, 158, 11, 0.35);">
-          <div class="bento-icon-badge" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-gold);">🌍</div>
+        <div class="bento-card bento-span-1 glass-panel" style="border-color: rgba(217, 119, 6, 0.25);">
+          <div class="bento-icon-badge" style="background: rgba(217, 119, 6, 0.12); color: var(--accent-gold);">🌍</div>
           <h3 class="bento-title">Study Abroad Admissions</h3>
           <p class="bento-desc">
             Full-cycle admissions guidance for universities in the USA, UK, Canada, and Europe. Fully & partially funded scholarships with study gap support.
@@ -295,8 +304,8 @@
         </div>
 
         <!-- Bento Card 4: Cryptographic Certificate Verification (Span 2) -->
-        <div class="bento-card bento-span-2 glass-panel" style="background: linear-gradient(135deg, rgba(10, 24, 40, 0.8) 0%, rgba(6, 14, 26, 0.95) 100%); border-color: rgba(6, 182, 212, 0.35);">
-          <div class="bento-icon-badge" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">📜</div>
+        <div class="bento-card bento-span-2 glass-panel" style="border-color: rgba(2, 132, 199, 0.25);">
+          <div class="bento-icon-badge" style="background: rgba(2, 132, 199, 0.12); color: var(--accent-cyan);">📜</div>
           <h3 class="bento-title">Instant Digital Credential Verification</h3>
           <p class="bento-desc">
             Universities, scholarship boards, and employers can verify student academic credentials and exam scores instantly using our decentralized verification engine.
@@ -371,7 +380,7 @@
             <span class="kicker-dot" style="background: var(--accent-gold); box-shadow: 0 0 10px var(--accent-gold);"></span>
             <span>Greater Light Global Consult (GLGC)</span>
           </div>
-          <h2 style="font-size: 2.3rem; margin: 12px 0; color: #fff;">Dream to Study Abroad? We Make It Reality.</h2>
+          <h2 style="font-size: 2.3rem; margin: 12px 0; color: var(--text-main);">Dream to Study Abroad? We Make It Reality.</h2>
           <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 22px;">
             Beyond top exam prep, GLGC provides full-cycle international university admissions, scholarship securing, and visa processing support. Whether you have written SAT & IELTS or need waiver guidance, our advisors walk with you from application to campus arrival.
           </p>
@@ -383,7 +392,7 @@
             <span class="flag-pill">🇪🇺 Europe & Others</span>
           </div>
 
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; color: #cbd5e1; font-size: 0.95rem;">
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; color: var(--text-muted); font-size: 0.95rem;">
             <li>✓ <strong>Fully & Partially Funded Scholarships:</strong> Undergraduate and Master's degree awards.</li>
             <li>✓ <strong>Study Gap Accepted:</strong> Tailored SOP and profile positioning to turn your dreams into reality.</li>
             <li>✓ <strong>Flexible Payment Plans & Low Tuition:</strong> Direct partnerships with global institutions.</li>
@@ -503,7 +512,7 @@
             <span class="kicker-dot"></span>
             <span>Live Diagnostic Sessions</span>
           </div>
-          <h2 style="font-size: 2.2rem; margin: 12px 0; color: #fff;">Book a 1-on-1 Strategy Session</h2>
+          <h2 style="font-size: 2.2rem; margin: 12px 0; color: var(--text-main);">Book a 1-on-1 Strategy Session</h2>
           <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 24px;">
             Schedule a dedicated 45-minute strategy call with Engr. Ajibade or a senior GLGC tutor to pinpoint your weak areas, review difficult problem sets, or formulate an exam score plan.
           </p>
@@ -511,12 +520,12 @@
           <form id="bookingForm" onsubmit="confirmMentorshipBooking(event)">
             <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px;">
               <div>
-                <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Your Full Name</label>
+                <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Your Full Name</label>
                 <input type="text" id="mentorStudentName" class="search-input" style="border-radius: var(--radius-md);" placeholder="e.g. Oluwaseun Adeleke" required />
               </div>
               <div>
-                <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Target Exam / Subject</label>
-                <select id="mentorExamType" class="search-input" style="border-radius: var(--radius-md); background: #0c1222;" required>
+                <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Target Exam / Subject</label>
+                <select id="mentorExamType" class="search-input" style="border-radius: var(--radius-md); background: var(--bg-surface); color: var(--text-main);" required>
                   <option value="SAT Strategy">Digital SAT Math & Verbal Strategy</option>
                   <option value="Further Maths">Further Mathematics & Advanced Calculus</option>
                   <option value="IELTS Band 8.5">IELTS Speaking & Writing Mock Drill</option>
@@ -526,7 +535,7 @@
                 </select>
               </div>
               <div>
-                <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Available Time Slots (WAT / GMT+1)</label>
+                <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Available Time Slots (WAT / GMT+1)</label>
                 <div class="booking-slots-list">
                   <button type="button" class="slot-btn active">10:00 AM - 10:45 AM</button>
                   <button type="button" class="slot-btn">01:00 PM - 01:45 PM</button>
@@ -543,7 +552,7 @@
         <!-- Interactive Calendar Widget -->
         <div class="calendar-selector-wrap">
           <div class="cal-header">
-            <h4 style="font-size: 1.15rem; color: #ffffff;">October 2026 Session Slots</h4>
+            <h4 style="font-size: 1.15rem; color: var(--text-main);">October 2026 Session Slots</h4>
             <span style="font-size: 0.85rem; color: var(--accent-cyan);" class="mono-accent">Engr. Ajibade's Calendar</span>
           </div>
 
@@ -590,7 +599,7 @@
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 18px; margin-top: 14px;">
-            <p style="font-size: 0.88rem; color: var(--text-muted);"><strong style="color: #fff;">Selected Date:</strong> Tuesday, October 6, 2026</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted);"><strong style="color: var(--text-main);">Selected Date:</strong> Tuesday, October 6, 2026</p>
             <p style="font-size: 0.82rem; color: var(--accent-emerald); margin-top: 4px;" class="mono-accent">● 4 Openings with Engr. Ajibade</p>
           </div>
         </div>
@@ -679,7 +688,7 @@
       <!-- Certificate Verification Widget -->
       <div class="cert-verify-box glass-panel">
         <div>
-          <h4 style="font-size: 1.3rem; color: #fff; margin-bottom: 6px;">Instant Certificate Verification Portal</h4>
+          <h4 style="font-size: 1.3rem; color: var(--text-main); margin-bottom: 6px;">Instant Certificate Verification Portal</h4>
           <p style="color: var(--text-muted); font-size: 0.92rem;">Employers, universities, and sponsors can verify authentic GLGC credentials in real time.</p>
         </div>
         <div class="cert-input-wrap">
@@ -802,8 +811,8 @@
           <div class="footer-contact-item">
             <span>📞</span>
             <span class="mono-accent">
-              <a href="tel:08050367351" style="color: inherit; text-decoration: underline;">08050367351</a> / 
               <a href="tel:08163776464" style="color: inherit; text-decoration: underline;">08163776464</a> / 
+              <a href="tel:08050367351" style="color: inherit; text-decoration: underline;">08050367351</a> / 
               <a href="tel:09165332314" style="color: inherit; text-decoration: underline;">09165332314</a>
             </span>
           </div>
@@ -837,7 +846,7 @@
   <div class="modal-overlay" id="syllabusModal">
     <div class="modal-window">
       <button class="modal-close-btn" onclick="closeModal('syllabusModal')">&times;</button>
-      <h3 id="syllabusCourseTitle" style="font-size: 1.45rem; color: #fff; margin-bottom: 16px;">Course Syllabus</h3>
+      <h3 id="syllabusCourseTitle" style="font-size: 1.45rem; color: var(--text-main); margin-bottom: 16px;">Course Syllabus</h3>
       <div id="syllabusContent"></div>
       <div style="margin-top: 26px; display: flex; justify-content: flex-end; gap: 12px;">
         <button class="btn btn-outline btn-sm" onclick="closeModal('syllabusModal')">Close</button>
@@ -850,7 +859,7 @@
   <div class="modal-overlay" id="checkoutModal">
     <div class="modal-window">
       <button class="modal-close-btn" onclick="closeModal('checkoutModal')">&times;</button>
-      <h3 style="font-size: 1.45rem; color: #fff; margin-bottom: 6px;">Secure Student Enrollment</h3>
+      <h3 style="font-size: 1.45rem; color: var(--text-main); margin-bottom: 6px;">Secure Student Enrollment</h3>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 22px;">Unlock instant access to lessons, quizzes, formula sheets & discussion boards.</p>
       
       <div id="checkoutItemDetails"></div>
@@ -858,20 +867,20 @@
       <form onsubmit="processPaymentSimulator(event)">
         <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px;">
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Student Full Name</label>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Student Full Name</label>
             <input type="text" class="search-input" style="border-radius: var(--radius-md);" placeholder="e.g. Samuel Adekunle" required />
           </div>
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Email Address</label>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Email Address</label>
             <input type="email" class="search-input" style="border-radius: var(--radius-md);" placeholder="samuel@example.com" required />
           </div>
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Payment Method</label>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Payment Method</label>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <label style="background: rgba(255,255,255,0.05); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
+              <label style="background: rgba(125,125,125,0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-main);">
                 <input type="radio" name="paymethod" checked /> Card (Visa / MC / Verve)
               </label>
-              <label style="background: rgba(255,255,255,0.05); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.88rem;">
+              <label style="background: rgba(125,125,125,0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-main);">
                 <input type="radio" name="paymethod" /> Bank Transfer / USSD
               </label>
             </div>
@@ -880,7 +889,7 @@
 
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-glass); padding-top: 20px; margin-bottom: 22px;">
           <span style="font-size: 0.98rem; color: var(--text-muted);">Amount Due:</span>
-          <strong id="checkoutTotalAmount" style="font-size: 1.6rem; color: #34d399;" class="mono-accent">$69</strong>
+          <strong id="checkoutTotalAmount" style="font-size: 1.6rem; color: #059669;" class="mono-accent">$69</strong>
         </div>
 
         <button type="submit" id="paySubmitBtn" class="btn btn-primary" style="width: 100%;">
@@ -894,22 +903,22 @@
   <div class="modal-overlay" id="consultModal">
     <div class="modal-window">
       <button class="modal-close-btn" onclick="closeModal('consultModal')">&times;</button>
-      <h3 style="font-size: 1.45rem; color: #fff; margin-bottom: 6px;">Book Free Study Abroad Consultation</h3>
+      <h3 style="font-size: 1.45rem; color: var(--text-main); margin-bottom: 6px;">Book Free Study Abroad Consultation</h3>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 22px;">Greater Light Global Consult • Admissions & Scholarships</p>
 
       <form onsubmit="submitConsultForm(event)">
         <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px;">
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Your Name</label>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Your Name</label>
             <input type="text" class="search-input" style="border-radius: var(--radius-md);" placeholder="e.g. Babatunde Johnson" required />
           </div>
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">WhatsApp Phone Number</label>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">WhatsApp Phone Number</label>
             <input type="tel" class="search-input" style="border-radius: var(--radius-md);" placeholder="e.g. 08163776464" required />
           </div>
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Preferred Destination</label>
-            <select class="search-input" style="border-radius: var(--radius-md); background: #0c1222;" required>
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Preferred Destination</label>
+            <select class="search-input" style="border-radius: var(--radius-md); background: var(--bg-surface); color: var(--text-main);" required>
               <option value="USA">United States (Undergraduate / Masters)</option>
               <option value="UK">United Kingdom</option>
               <option value="Canada">Canada</option>
@@ -917,8 +926,8 @@
             </select>
           </div>
           <div>
-            <label style="display: block; font-size: 0.88rem; color: #e2e8f0; margin-bottom: 6px; font-weight: 600;">Exam Status</label>
-            <select class="search-input" style="border-radius: var(--radius-md); background: #0c1222;">
+            <label style="display: block; font-size: 0.88rem; color: var(--text-main); margin-bottom: 6px; font-weight: 600;">Exam Status</label>
+            <select class="search-input" style="border-radius: var(--radius-md); background: var(--bg-surface); color: var(--text-main);">
               <option value="Need SAT/IELTS">Need SAT / IELTS Training at GLGC</option>
               <option value="Already Taken">Already taken exam (seeking scholarship)</option>
               <option value="Without SAT/IELTS">Seeking admissions without SAT / IELTS</option>

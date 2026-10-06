@@ -37,6 +37,10 @@
       </ul>
 
       <div class="nav-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Bright / Dark Mode" title="Toggle Bright / Dark Mode">
+          <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
+          <span id="themeToggleText">Bright</span>
+        </button>
         <a href="index.html" class="btn btn-outline btn-sm">Return to Academy</a>
         <a href="#wizard" class="btn btn-primary btn-sm">Join Faculty</a>
         <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
@@ -69,6 +73,10 @@
     </ul>
 
     <div class="mobile-drawer-actions">
+      <button class="theme-toggle-btn" onclick="toggleTheme()" style="width: 100%; justify-content: center; padding: 10px;" aria-label="Toggle Bright / Dark Mode">
+        <span class="theme-toggle-icon" id="mobileThemeToggleIcon">☀️</span>
+        <span id="mobileThemeToggleText">Bright Theme</span>
+      </button>
       <a href="index.html" class="btn btn-outline" style="width: 100%;">Back to Academy</a>
       <a href="#wizard" class="btn btn-primary" style="width: 100%;" onclick="closeMobileMenu()">Start Application</a>
     </div>

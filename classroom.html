@@ -45,10 +45,15 @@
         🎓 Claim Certificate
       </button>
 
+      <button id="themeToggleBtn" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Bright / Dark Mode" title="Toggle Bright / Dark Mode">
+        <span class="theme-toggle-icon" id="themeToggleIcon">☀️</span>
+        <span id="themeToggleText">Bright</span>
+      </button>
+
       <div style="display: flex; align-items: center; gap: 10px; border-left: 1px solid var(--border-glass); padding-left: 14px;">
         <div class="author-avatar" style="width: 34px; height: 34px; font-size: 0.85rem;">ST</div>
         <div style="display: flex; flex-direction: column;">
-          <strong style="font-size: 0.82rem; color: #fff;">Student Portal</strong>
+          <strong style="font-size: 0.82rem; color: var(--text-main);">Student Portal</strong>
           <small style="font-size: 0.7rem; color: var(--accent-emerald);">All-Access Active</small>
         </div>
       </div>

@@ -3,8 +3,8 @@
    ========================================================================== */
 
 .classroom-body {
-  background: #060911;
-  color: #f1f5f9;
+  background: var(--bg-deep);
+  color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
 
 .classroom-nav {
   height: 68px;
-  background: rgba(10, 15, 26, 0.95);
+  background: var(--nav-bg-scrolled);
   border-bottom: 1px solid var(--border-glass);
   display: flex;
   align-items: center;
@@ -35,13 +35,13 @@
 }
 
 .classroom-back-link:hover {
-  color: #ffffff;
+  color: var(--primary);
 }
 
 .classroom-course-title-nav {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-main);
   display: flex;
   align-items: center;
   gap: 12px;

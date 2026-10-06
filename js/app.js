@@ -7,7 +7,14 @@ let currentSearch = '';
 let billingCycle = 'monthly'; // 'monthly' or 'annual'
 let activeCheckoutCourseId = 'fmath-02';
 
+// Immediately apply saved theme to avoid FOUC
+(function() {
+  const saved = localStorage.getItem('glgc_theme') || 'light';
+  document.documentElement.setAttribute('data-theme', saved);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initStickyHeader();
   initCategoryPills();
   initSearch();
@@ -18,6 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
   initCertificateVerification();
   renderCourses();
 });
+
+// Theme Management (Bright / Dark Mode)
+function initThemeToggle() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyThemeUI(current);
+}
+
+function applyThemeUI(theme) {
+  const isLight = theme === 'light';
+  const icon = isLight ? '☀️' : '🌙';
+  const text = isLight ? 'Bright' : 'Dark';
+
+  const deskIcon = document.getElementById('themeToggleIcon');
+  const deskText = document.getElementById('themeToggleText');
+  if (deskIcon) deskIcon.textContent = icon;
+  if (deskText) deskText.textContent = text;
+
+  const mobIcon = document.getElementById('mobileThemeToggleIcon');
+  const mobText = document.getElementById('mobileThemeToggleText');
+  if (mobIcon) mobIcon.textContent = icon;
+  if (mobText) mobText.textContent = `${text} Mode`;
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const nextTheme = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('glgc_theme', nextTheme);
+  applyThemeUI(nextTheme);
+
+  if (typeof showToast === 'function') {
+    showToast(`Theme switched to ${nextTheme === 'light' ? 'Bright Luminary' : 'Luminous Midnight'}`, 'info');
+  }
+}
 
 // Sticky Header
 function initStickyHeader() {

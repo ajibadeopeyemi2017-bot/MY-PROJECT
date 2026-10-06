@@ -1,10 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Navbar({ activeCurrency, onCurrencyChange }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('glgc_theme') || 'light';
+    setTheme(saved);
+    document.documentElement.setAttribute('data-theme', saved);
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('glgc_theme', next);
+  };
 
   const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -38,6 +52,18 @@ export default function Navbar({ activeCurrency, onCurrencyChange }) {
 
           {/* Nav Actions & Currency Switcher */}
           <div className="nav-actions">
+            <button
+              type="button"
+              id="themeToggleBtn"
+              className="theme-toggle-btn"
+              onClick={toggleTheme}
+              aria-label="Toggle Bright / Dark Mode"
+              title="Toggle Bright / Dark Mode"
+            >
+              <span className="theme-toggle-icon">{theme === 'light' ? '☀️' : '🌙'}</span>
+              <span>{theme === 'light' ? 'Bright' : 'Dark'}</span>
+            </button>
+
             {onCurrencyChange && (
               <div className="currency-toggle" title="Switch Currency">
                 <button
@@ -118,6 +144,16 @@ export default function Navbar({ activeCurrency, onCurrencyChange }) {
         </ul>
 
         <div className="mobile-drawer-actions">
+          <button
+            type="button"
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            style={{ width: '100%', justifyContent: 'center', padding: '10px' }}
+            aria-label="Toggle Bright / Dark Mode"
+          >
+            <span className="theme-toggle-icon">{theme === 'light' ? '☀️' : '🌙'}</span>
+            <span>{theme === 'light' ? 'Bright Theme' : 'Dark Theme'}</span>
+          </button>
           <Link href="/classroom" className="btn btn-outline" onClick={closeMobileMenu} style={{ width: '100%' }}>
             Student Classroom
           </Link>

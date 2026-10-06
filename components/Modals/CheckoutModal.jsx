@@ -58,7 +58,7 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
     <div className="modal-overlay open" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="modal-window">
         <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">&times;</button>
-        <h3 style={{ fontSize: '1.45rem', color: '#fff', marginBottom: '6px' }}>Secure Student Enrollment</h3>
+        <h3 style={{ fontSize: '1.45rem', color: 'var(--text-main)', marginBottom: '6px' }}>Secure Student Enrollment</h3>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>
           Unlock instant access to lessons, quizzes, formula sheets & discussion boards.
         </p>
@@ -73,17 +73,17 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <strong style={{ color: '#fff', display: 'block', fontSize: '1rem' }}>{title}</strong>
+              <strong style={{ color: 'var(--text-main)', display: 'block', fontSize: '1rem' }}>{title}</strong>
               <small style={{ color: 'var(--text-muted)' }}>Instructor: {item.instructor || 'Engr. Ajibade Opeyemi'}</small>
             </div>
-            <strong className="mono-accent" style={{ color: '#34d399', fontSize: '1.3rem' }}>{priceStr}</strong>
+            <strong className="mono-accent" style={{ color: '#059669', fontSize: '1.3rem' }}>{priceStr}</strong>
           </div>
         </div>
 
         <form onSubmit={handleEnroll}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '22px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Student Full Name
               </label>
               <input
@@ -98,7 +98,7 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Email Address
               </label>
               <input
@@ -113,12 +113,12 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Payment Method
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                 <label style={{
-                  background: payMethod === 'card' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255,255,255,0.05)',
+                  background: payMethod === 'card' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(125,125,125,0.08)',
                   padding: '14px',
                   borderRadius: 'var(--radius-sm)',
                   border: `1px solid ${payMethod === 'card' ? 'var(--primary-glow)' : 'var(--border-glass)'}`,
@@ -127,7 +127,7 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
                   alignItems: 'center',
                   gap: '10px',
                   fontSize: '0.88rem',
-                  color: '#fff'
+                  color: 'var(--text-main)'
                 }}>
                   <input
                     type="radio"
@@ -139,7 +139,7 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
                 </label>
 
                 <label style={{
-                  background: payMethod === 'transfer' ? 'rgba(99, 102, 241, 0.2)' : 'rgba(255,255,255,0.05)',
+                  background: payMethod === 'transfer' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(125,125,125,0.08)',
                   padding: '14px',
                   borderRadius: 'var(--radius-sm)',
                   border: `1px solid ${payMethod === 'transfer' ? 'var(--primary-glow)' : 'var(--border-glass)'}`,
@@ -148,7 +148,7 @@ export default function CheckoutModal({ isOpen, item, currency = 'USD', onClose 
                   alignItems: 'center',
                   gap: '10px',
                   fontSize: '0.88rem',
-                  color: '#fff'
+                  color: 'var(--text-main)'
                 }}>
                   <input
                     type="radio"

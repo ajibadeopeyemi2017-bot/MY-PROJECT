@@ -42,7 +42,7 @@ export default function ConsultModal({ isOpen, onClose }) {
           <span className="kicker-dot" style={{ background: 'var(--accent-gold)' }}></span>
           <span>Study Abroad Advisory</span>
         </div>
-        <h3 style={{ fontSize: '1.45rem', color: '#fff', margin: '6px 0' }}>
+        <h3 style={{ fontSize: '1.45rem', color: 'var(--text-main)', margin: '6px 0' }}>
           Book Free Study Abroad Consultation
         </h3>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '22px' }}>
@@ -52,7 +52,7 @@ export default function ConsultModal({ isOpen, onClose }) {
         <form onSubmit={handleSubmit}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '22px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Your Full Name
               </label>
               <input
@@ -67,7 +67,7 @@ export default function ConsultModal({ isOpen, onClose }) {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 WhatsApp Phone Number
               </label>
               <input
@@ -82,12 +82,12 @@ export default function ConsultModal({ isOpen, onClose }) {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Preferred Destination
               </label>
               <select
                 className="search-input"
-                style={{ borderRadius: 'var(--radius-md)', background: '#0c1222' }}
+                style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-surface)', color: 'var(--text-main)' }}
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
               >
@@ -99,12 +99,12 @@ export default function ConsultModal({ isOpen, onClose }) {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.88rem', color: '#e2e8f0', marginBottom: '6px', fontWeight: '600' }}>
+              <label style={{ display: 'block', fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '6px', fontWeight: '600' }}>
                 Exam & Profile Status
               </label>
               <select
                 className="search-input"
-                style={{ borderRadius: 'var(--radius-md)', background: '#0c1222' }}
+                style={{ borderRadius: 'var(--radius-md)', background: 'var(--bg-surface)', color: 'var(--text-main)' }}
                 value={examStatus}
                 onChange={(e) => setExamStatus(e.target.value)}
               >
